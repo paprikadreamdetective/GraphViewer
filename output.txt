@@ -1,0 +1,16 @@
+Camino: DEF  Costo acumulado: 13.073592
+Camino: ABEF  Costo acumulado: 19.913715
+Camino: ADEF  Costo acumulado: 19.913715
+Camino: ABCGF  Costo acumulado: 19.242641
+Camino: DABEF  Costo acumulado: 25.239117
+Camino: DEBCGF  Costo acumulado: 24.568043
+Camino: DABCGF  Costo acumulado: 24.568043
+Camino: ADEBCGF  Costo acumulado: 31.408165
+Camino: DEF  Costo acumulado: 13.073592
+Camino: ABEF  Costo acumulado: 19.913715
+Camino: ADEF  Costo acumulado: 19.913715
+Camino: ABCGF  Costo acumulado: 19.242641
+Camino: DABEF  Costo acumulado: 25.239117
+Camino: DEBCGF  Costo acumulado: 24.568043
+Camino: DABCGF  Costo acumulado: 24.568043
+Camino: ADEBCGF  Costo acumulado: 31.408165

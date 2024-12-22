@@ -1,0 +1,8 @@
+S: (A D) in (0 3)
+A: (S B D) in (4 6)
+B: (A C E) in (7 6)
+C: (B G) in (11 6)
+D: (S A E) in (3 0)
+E: (B D F) in (6 0)
+F: (E G) in (11 3)
+G: (C F) in (14 6)
