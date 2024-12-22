@@ -34,11 +34,20 @@
                                        (get nodo 'coordinates)))))
     (guardar-en-txt "grafo.txt" grafo)))
 
+;(defun guardar-caminos-y-costos (camino costo)
+;  "Guarda los caminos recorridos y el costo acumulado en un archivo TXT."
+;  (let ((contenido (format nil "path: ~a cost: ~a~%"
+;                           camino costo)))
+;    (guardar-en-txt "caminos.txt" contenido)))
+
 (defun guardar-caminos-y-costos (camino costo)
   "Guarda los caminos recorridos y el costo acumulado en un archivo TXT."
-  (let ((contenido (format nil "path: ~a cost: ~a~%"
-                           camino costo)))
-    (guardar-en-txt "caminos.txt" contenido)))
+  (let ((contenido (format nil "Camino: ~a Costo acumulado: ~a~%" camino costo)))
+    (with-open-file (stream "caminos.txt"
+                            :direction :output
+                            :if-exists :append
+                            :if-does-not-exist :create)
+      (format stream "~a" contenido))))
 
 (defun best-first-search-con-archivos (start finish &optional (queue (list (list start))))
   "Realiza una búsqueda Best-First y genera los archivos correspondientes."
@@ -52,11 +61,13 @@
        path)) ;; Si se encuentra el nodo objetivo
     (t
      (let* ((current-path (first queue))
+            (cost (reduce #'+ (mapcar #'(lambda (pair) (apply #'distancia-recta pair)) (pairwise (reverse current-path)))))
             (extended-paths (extend current-path))
             (sorted-paths (sort extended-paths
                                 #'(lambda (p1 p2)
                                     (< (distancia-recta (first p1) finish)
                                        (distancia-recta (first p2) finish))))))
+        (guardar-caminos-y-costos (reverse current-path) cost)
        (best-first-search-con-archivos start finish (append (rest queue) sorted-paths))))))
 
 ;; Construyendo el grafo con vecinos y coordenadas
