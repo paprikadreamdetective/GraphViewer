@@ -32,7 +32,7 @@
                                        nodo
                                        (get nodo 'neighbors)
                                        (get nodo 'coordinates)))))
-    (guardar-en-txt "grafo.txt" grafo)))
+    (guardar-en-txt "grafo.txt" grafo) ))
 
 ;(defun guardar-caminos-y-costos (camino costo)
 ;  "Guarda los caminos recorridos y el costo acumulado en un archivo TXT."
@@ -40,14 +40,23 @@
 ;                           camino costo)))
 ;    (guardar-en-txt "caminos.txt" contenido)))
 
+;(defun guardar-caminos-y-costos (camino costo)
+;  "Guarda los caminos recorridos y el costo acumulado en un archivo TXT."
+;  (let ((contenido (format nil "Camino: ~a Costo acumulado: ~a~%" camino costo)))
+;    (with-open-file (stream "caminos.txt"
+;                            :direction :output
+;                            :if-exists :append
+;                            :if-does-not-exist :create)
+;      (format stream "~a" contenido)) ))
+
 (defun guardar-caminos-y-costos (camino costo)
-  "Guarda los caminos recorridos y el costo acumulado en un archivo TXT."
-  (let ((contenido (format nil "Camino: ~a Costo acumulado: ~a~%" camino costo)))
-    (with-open-file (stream "caminos.txt"
-                            :direction :output
-                            :if-exists :append
-                            :if-does-not-exist :create)
-      (format stream "~a" contenido))))
+  "Guarda los caminos recorridos y el costo acumulado en un archivo TXT.
+  Sobrescribe el archivo en cada ejecución."
+  (with-open-file (stream "caminos.txt"
+                          :direction :output
+                          :if-exists :append
+                          :if-does-not-exist :create)
+    (format stream "path: ~a cost: ~a~%" camino costo)))
 
 (defun best-first-search-con-archivos (start finish &optional (queue (list (list start))))
   "Realiza una búsqueda Best-First y genera los archivos correspondientes."
@@ -89,6 +98,12 @@
       (get 'f 'coordinates) '(11 3)
       (get 'g 'coordinates) '(14 6))
 
+
+(with-open-file (stream "caminos.txt"
+                          :direction :output
+                          :if-exists :supersede
+                          :if-does-not-exist :create)
+    (format stream "")) ;; Deja el archivo vacío
 ;; Ejecutar la búsqueda y generar los archivos
 (best-first-search-con-archivos 's 'f)
 
