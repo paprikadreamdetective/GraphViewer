@@ -34,21 +34,6 @@
                                        (get nodo 'coordinates)))))
     (guardar-en-txt "grafo.txt" grafo) ))
 
-;(defun guardar-caminos-y-costos (camino costo)
-;  "Guarda los caminos recorridos y el costo acumulado en un archivo TXT."
-;  (let ((contenido (format nil "path: ~a cost: ~a~%"
-;                           camino costo)))
-;    (guardar-en-txt "caminos.txt" contenido)))
-
-;(defun guardar-caminos-y-costos (camino costo)
-;  "Guarda los caminos recorridos y el costo acumulado en un archivo TXT."
-;  (let ((contenido (format nil "Camino: ~a Costo acumulado: ~a~%" camino costo)))
-;    (with-open-file (stream "caminos.txt"
-;                            :direction :output
-;                            :if-exists :append
-;                            :if-does-not-exist :create)
-;      (format stream "~a" contenido)) ))
-
 (defun guardar-caminos-y-costos (camino costo)
   "Guarda los caminos recorridos y el costo acumulado en un archivo TXT.
   Sobrescribe el archivo en cada ejecución."
