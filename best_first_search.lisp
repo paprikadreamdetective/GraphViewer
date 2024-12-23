@@ -90,7 +90,7 @@
                           :if-does-not-exist :create)
     (format stream "")) ;; Deja el archivo vacío
 ;; Ejecutar la búsqueda y generar los archivos
-(best-first-search-con-archivos 's 'f)
+(best-first-search-con-archivos 's 'g)
 
 
 

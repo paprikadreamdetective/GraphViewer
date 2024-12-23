@@ -7,7 +7,8 @@ function App() {
   return (
     <div className="App">
       <GraphCanvas
-    controls="rotate"
+    edgeArrowPosition="none"
+    cameraMode="rotate"
     nodes={[
       {
         id: 'n-1',
@@ -20,7 +21,7 @@ function App() {
     ]}
     edges={[
       {
-        id: '1->2',
+        id: '1-2',
         source: 'n-1',
         target: 'n-2',
         label: 'Edge 1-2'
