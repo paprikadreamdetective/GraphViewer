@@ -1,7 +1,7 @@
 //import logo from './logo.svg';
 import './App.css';
 import React from 'react';
-import { GraphCanvas } from 'reagraph';
+//import { GraphCanvas } from 'reagraph';
 
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
@@ -12,12 +12,16 @@ function App() {
   return (
     <Router>
       <div className="app-container">
+        
         <Sidebar />
-        <Routes>
-          <Route path="/dfs" element={<GraphArea title="Depth-First-Search" />} />
-          <Route path="/bfs" element={<GraphArea title="Breadth-First-Search" />} />
-          <Route path="/bestfs" element={<GraphArea title="Best-First-Search" />} />
-        </Routes>
+        
+        
+          <Routes>
+            <Route path="/dfs" element={<GraphArea title="Depth-First-Search" />} />
+            <Route path="/bfs" element={<GraphArea title="Breadth-First-Search" />} />
+            <Route path="/bestfs" element={<GraphArea title="Best-First-Search" />} />
+          </Routes>
+        
       </div>
     </Router>
   );
