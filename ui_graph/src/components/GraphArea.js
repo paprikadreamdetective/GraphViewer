@@ -105,6 +105,11 @@ const GraphArea = ({ title }) => {
         <input type="file" accept=".txt" onChange={handleFileUpload} />
           <div className="graph-canvas">
             <GraphCanvas
+            directionalLight 
+            layoutType="forceDirected3d"
+            position={[0, 5, -4]} 
+            intensity={5}
+            
               sizingType="none"
               edgeArrowPosition="none" // No arrows for undirected graph
               cameraMode="rotate"
