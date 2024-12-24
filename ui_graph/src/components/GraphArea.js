@@ -113,14 +113,23 @@ const GraphArea = ({ title }) => {
         if (index < animationPath.length) {
           setSelectedNodes(animationPath[index]); // Actualiza nodos seleccionados
           index++;
-          setTimeout(animate, 1000); // Pausa de 1 segundo
+          setTimeout(animate, 250); // Pausa de 1 segundo
         } else {
-          setSelectedNodes([]); // Limpia selección al finalizar
+          //setSelectedNodes([]); // Limpia selección al finalizar
+           // Al finalizar, resalta el último camino
+        if (animationPath.length > 0) {
+          setSelectedNodes(animationPath[animationPath.length - 1]);
+        }
         }
       };
 
       animate(); // Inicia animación
     }
+  };
+
+  const resetAnimation = () => {
+    
+    setSelectedNodes([]); // Limpia selección al finalizar
   };
 
   return (
@@ -134,6 +143,11 @@ const GraphArea = ({ title }) => {
         onClick={startAnimation}
         disabled={!isAnimationReady} // Habilitar solo si se cargó el archivo de rutas
         > Iniciar Animación</button>
+
+        <button
+        onClick={resetAnimation}
+        //disabled={!isAnimationReady} // Habilitar solo si se cargó el archivo de rutas
+        > Reset</button>
           <div className="graph-canvas">
             <GraphCanvas
             
