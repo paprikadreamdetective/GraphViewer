@@ -26,7 +26,7 @@
 (defun generar-archivo-grafo ()
   "Genera un archivo con la representación del grafo."
   (let ((grafo ""))
-    (dolist (nodo '(s a b c d e f))
+    (dolist (nodo '(a b c d e f g h i j k l m n o p q r s))
       (setf grafo (concatenate 'string grafo
                                (format nil "~a: ~a~%"  ;;in ~a~%"
                                        nodo
@@ -65,23 +65,49 @@
        (best-first-search-con-archivos start finish (append (rest queue) sorted-paths))))))
 
 ;; Construyendo el grafo con vecinos y coordenadas
-(setf (get 's 'neighbors) '(a d)
-      (get 'a 'neighbors) '(s b d)
-      (get 'b 'neighbors) '(a c e)
-      (get 'c 'neighbors) '(b)
-      (get 'd 'neighbors) '(s a e)
-      (get 'e 'neighbors) '(b d f)
-      (get 'f 'neighbors) '(e)
+
+(setf (get 'a 'neighbors) '(b c d e)
+      (get 'b 'neighbors) '(a c g f)
+      (get 'c 'neighbors) '(a d f b)
+      (get 'd 'neighbors) '(a e g f c)
+      (get 'e 'neighbors) '(a h g d)
+      (get 'f 'neighbors) '(b c d g j l)
+      (get 'g 'neighbors) '(b d e h k j i f)
+      (get 'h 'neighbors) '(e k g)
+      (get 'i 'neighbors) '(b g j m l)
+      (get 'j 'neighbors) '(f g k o n m i)
+      (get 'k 'neighbors) '(h r o j g)
+      (get 'l 'neighbors) '(f i m q p)
+      (get 'm 'neighbors) '(i j n p l)
+      (get 'n 'neighbors) '(j o q p m)
+      (get 'o 'neighbors) '(j k r q n)
+      (get 'p 'neighbors) '(l m n q s)
+      (get 'q 'neighbors) '(l n o r s p)
+      (get 'r 'neighbors) '(o k s q)
+      (get 's 'neighbors) '(p q r)
       )
 
-(setf (get 's 'coordinates) '(0 3)
-      (get 'a 'coordinates) '(4 6)
-      (get 'b 'coordinates) '(7 6)
-      (get 'c 'coordinates) '(11 6)
-      (get 'd 'coordinates) '(3 0)
-      (get 'e 'coordinates) '(6 0)
-      (get 'f 'coordinates) '(11 3)
+(setf (get 'a 'coordinates) '(1 5)
+      (get 'b 'coordinates) '(3 8)
+      (get 'c 'coordinates) '(3 6)
+      (get 'd 'coordinates) '(3 4)
+      (get 'e 'coordinates) '(3 2)
+      (get 'f 'coordinates) '(6 8)
+      (get 'g 'coordinates) '(6 5)
+      (get 'h 'coordinates) '(6 2)
+      (get 'i 'coordinates) '(9 7)
+      (get 'j 'coordinates) '(9 4)
+      (get 'k 'coordinates) '(9 1)
+      (get 'l 'coordinates) '(12 9)
+      (get 'm 'coordinates) '(12 7)
+      (get 'n 'coordinates) '(12 5)
+      (get 'o 'coordinates) '(12 3)
+      (get 'p 'coordinates) '(15 7)
+      (get 'q 'coordinates) '(15 5)
+      (get 'r 'coordinates) '(15 3)
+      (get 's 'coordinates) '(18 6)
       )
+
 
 
 (with-open-file (stream "caminos.txt"
@@ -90,7 +116,7 @@
                           :if-does-not-exist :create)
     (format stream "")) ;; Deja el archivo vacío
 ;; Ejecutar la búsqueda y generar los archivos
-(best-first-search-con-archivos 's 'f)
+(best-first-search-con-archivos 'a 's)
 
 
 
