@@ -39,7 +39,7 @@ const GraphArea = ({ title }) => {
 export default GraphArea;*/
 import './GraphArea.css';
 import React, { useState } from 'react';
-import { GraphCanvas } from 'reagraph';
+import { darkTheme, GraphCanvas, directionalLight } from 'reagraph';
 
 const GraphArea = ({ title }) => {
   const [graphData, setGraphData] = useState({ nodes: [], edges: [] });
@@ -105,17 +105,19 @@ const GraphArea = ({ title }) => {
         <input type="file" accept=".txt" onChange={handleFileUpload} />
           <div className="graph-canvas">
             <GraphCanvas
-            directionalLight 
+            nodes={graphData.nodes}
+            edges={graphData.edges}
+            theme={darkTheme}
             layoutType="forceDirected3d"
-            position={[0, 5, -4]} 
-            intensity={5}
             
               sizingType="none"
               edgeArrowPosition="none" // No arrows for undirected graph
               cameraMode="rotate"
-              nodes={graphData.nodes}
-              edges={graphData.edges}
-            />
+              
+            >
+
+              <directionalLight position={[0, 5, -4]} intensity={1} />
+            </GraphCanvas>
         </div>
       </div>
     
