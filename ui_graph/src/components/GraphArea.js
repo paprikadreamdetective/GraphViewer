@@ -1,44 +1,5 @@
-/*import React from 'react';
-import { GraphCanvas } from 'reagraph';
 import './GraphArea.css';
-
-const GraphArea = ({ title }) => {
-  return (
-    <div className="graph-area">
-      <h3>{title}</h3>
-      
-      <div className="graph-canvas"> 
-        {<GraphCanvas
-          sizingType="none"
-          edgeArrowPosition="none"
-          cameraMode="rotate"
-          nodes={[
-            {
-              id: 'n-1',
-              label: '1'
-            },
-            {
-              id: 'n-2',
-              label: '2'
-            }
-          ]}
-          edges={[
-            {
-              id: '1-2',
-              source: 'n-1',
-              target: 'n-2',
-              label: 'Edge 1-2'
-            }
-          ]}
-        />}
-      </div>
-    </div>
-  );
-};
-
-export default GraphArea;*/
-import './GraphArea.css';
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState } from 'react';
 import { darkTheme, GraphCanvas, directionalLight } from 'reagraph';
 
 const GraphArea = ({ title }) => {
@@ -46,6 +7,8 @@ const GraphArea = ({ title }) => {
   const [animationPath, setAnimationPath] = useState([]); // Guarda la secuencia de nodos
   //const graphRef = useRef(null);
   const [selectedNodes, setSelectedNodes] = useState([]); // Nodo seleccionado actualmente
+  const [isAnimationReady, setIsAnimationReady] = useState(false); // Controla el estado del botón de animación
+
   const handleFileUpload = async (event) => {
     const file = event.target.files[0];
     if (file) {
@@ -62,6 +25,7 @@ const GraphArea = ({ title }) => {
       if (text.includes('path:')) {
         const parsedPaths = parsePathFile(text);
         setAnimationPath(parsedPaths); // Almacena rutas para animación
+        setIsAnimationReady(true); // Habilitar botón de animación
       } else {
         const parsedGraph = parseGraphData(text);
         setGraphData(parsedGraph);
@@ -122,7 +86,7 @@ const GraphArea = ({ title }) => {
   
   
   // Animación de nodos
-  useEffect(() => {
+  /*useEffect(() => {
     if (animationPath.length > 0) {
       let index = 0;
 
@@ -138,7 +102,26 @@ const GraphArea = ({ title }) => {
 
       animate(); // Inicia animación
     }
-  }, [animationPath]);
+  }, [animationPath]);*/
+
+  // Función para iniciar la animación
+  const startAnimation = () => {
+    if (animationPath.length > 0) {
+      let index = 0;
+
+      const animate = () => {
+        if (index < animationPath.length) {
+          setSelectedNodes(animationPath[index]); // Actualiza nodos seleccionados
+          index++;
+          setTimeout(animate, 1000); // Pausa de 1 segundo
+        } else {
+          setSelectedNodes([]); // Limpia selección al finalizar
+        }
+      };
+
+      animate(); // Inicia animación
+    }
+  };
 
   return (
     
@@ -147,6 +130,10 @@ const GraphArea = ({ title }) => {
         <h3>{title}</h3>
         <input type="file" accept=".txt" onChange={handleFileUpload} />
         <input type="file" accept=".txt" onChange={handleFilePathsUpload} />
+        <button
+        onClick={startAnimation}
+        disabled={!isAnimationReady} // Habilitar solo si se cargó el archivo de rutas
+        > Iniciar Animación</button>
           <div className="graph-canvas">
             <GraphCanvas
             
