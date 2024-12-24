@@ -41,7 +41,7 @@ import './GraphArea.css';
 import React, { useState } from 'react';
 import { GraphCanvas } from 'reagraph';
 
-const GraphArea = () => {
+const GraphArea = ({ title }) => {
   const [graphData, setGraphData] = useState({ nodes: [], edges: [] });
 
   const handleFileUpload = async (event) => {
@@ -98,19 +98,22 @@ const GraphArea = () => {
   
 
   return (
-    <div>
-      <h3>Graph Visualizer</h3>
-      <input type="file" accept=".txt" onChange={handleFileUpload} />
-      <div className="graph-canvas">
-        <GraphCanvas
-          sizingType="none"
-          edgeArrowPosition="none" // No arrows for undirected graph
-          cameraMode="rotate"
-          nodes={graphData.nodes}
-          edges={graphData.edges}
-        />
+    
+      
+      <div className="graph-area">
+        <h3>{title}</h3>
+        <input type="file" accept=".txt" onChange={handleFileUpload} />
+          <div className="graph-canvas">
+            <GraphCanvas
+              sizingType="none"
+              edgeArrowPosition="none" // No arrows for undirected graph
+              cameraMode="rotate"
+              nodes={graphData.nodes}
+              edges={graphData.edges}
+            />
+        </div>
       </div>
-    </div>
+    
   );
 };
 
