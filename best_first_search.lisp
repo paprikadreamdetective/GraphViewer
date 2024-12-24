@@ -28,7 +28,7 @@
   (let ((grafo ""))
     (dolist (nodo '(s a b c d e f g))
       (setf grafo (concatenate 'string grafo
-                               (format nil "~a: ~a in ~a~%"
+                               (format nil "~a: ~a~%"  ;;in ~a~%"
                                        nodo
                                        (get nodo 'neighbors)
                                        (get nodo 'coordinates)))))
