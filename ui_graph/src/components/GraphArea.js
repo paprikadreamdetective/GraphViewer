@@ -5,7 +5,6 @@ import { darkTheme, GraphCanvas, directionalLight } from 'reagraph';
 const GraphArea = ({ title }) => {
   const [graphData, setGraphData] = useState({ nodes: [], edges: [] });
   const [animationPath, setAnimationPath] = useState([]); // Guarda la secuencia de nodos
-  //const graphRef = useRef(null);
   const [selectedNodes, setSelectedNodes] = useState([]); // Nodo seleccionado actualmente
   const [isAnimationReady, setIsAnimationReady] = useState(false); // Controla el estado del botón de animación
 
@@ -48,17 +47,14 @@ const GraphArea = ({ title }) => {
     const edgesSet = new Set();
     const processedEdges = new Set();
     const lines = text.trim().split('\n');
-  
     console.log("Archivo de entrada procesado línea por línea:");
     lines.forEach((line) => {
       console.log(line); // Imprimir cada línea del archivo
       const [node, neighbors] = line.split(':');
       const nodeId = node.trim();
       const neighborsList = neighbors.replace(/[()]/g, '').trim().split(' ');
-  
       // Add the node
       nodesSet.add(nodeId);
-  
       // Add edges (only from the first occurrence)
       neighborsList.forEach((neighbor) => {
         const neighborId = neighbor.trim();
@@ -70,104 +66,68 @@ const GraphArea = ({ title }) => {
         }
       });
     });
-  
     console.log("Nodos finales:", Array.from(nodesSet));
     console.log("Aristas finales:", Array.from(edgesSet));
-  
     // Convert Sets to arrays with unique keys
     const nodes = Array.from(nodesSet).map((id) => ({ id, label: id, key: id }));
     const edges = Array.from(edgesSet).map((edge) => {
       const [source, target] = edge.split('-');
       return { id: `${source}-${target}`, source, target, key: `${source}-${target}` };
     });
-  
     return { nodes, edges };
   };
   
-  
-  // Animación de nodos
-  /*useEffect(() => {
-    if (animationPath.length > 0) {
-      let index = 0;
-
-      const animate = () => {
-        if (index < animationPath.length) {
-          setSelectedNodes(animationPath[index]); // Actualiza nodos seleccionados
-          index++;
-          setTimeout(animate, 1000); // Pausa de 1 segundo
-        } else {
-          setSelectedNodes([]); // Limpia selección al finalizar
-        }
-      };
-
-      animate(); // Inicia animación
-    }
-  }, [animationPath]);*/
-
   // Función para iniciar la animación
   const startAnimation = () => {
     if (animationPath.length > 0) {
       let index = 0;
-
       const animate = () => {
+         // Detener la animación si se reseteó
         if (index < animationPath.length) {
           setSelectedNodes(animationPath[index]); // Actualiza nodos seleccionados
           index++;
-          setTimeout(animate, 250); // Pausa de 1 segundo
+          setTimeout(animate, 250); // Pausa de 250 milisegundos
         } else {
-          //setSelectedNodes([]); // Limpia selección al finalizar
-           // Al finalizar, resalta el último camino
-        if (animationPath.length > 0) {
-          setSelectedNodes(animationPath[animationPath.length - 1]);
-        }
+          if (animationPath.length > 0) {
+            setSelectedNodes(animationPath[animationPath.length - 1]);
+          }
         }
       };
-
-      animate(); // Inicia animación
+      animate(); 
     }
   };
 
   const resetAnimation = () => {
-    
-    setSelectedNodes([]); // Limpia selección al finalizar
+    setSelectedNodes([]); 
   };
 
   return (
-    
-      
-      <div className="graph-area">
-        <h3>{title}</h3>
-        <input type="file" accept=".txt" onChange={handleFileUpload} />
-        <input type="file" accept=".txt" onChange={handleFilePathsUpload} />
-        <button
-        onClick={startAnimation}
-        disabled={!isAnimationReady} // Habilitar solo si se cargó el archivo de rutas
-        > Iniciar Animación</button>
-
-        <button
-        onClick={resetAnimation}
-        //disabled={!isAnimationReady} // Habilitar solo si se cargó el archivo de rutas
-        > Reset</button>
-          <div className="graph-canvas">
-            <GraphCanvas
-            
+    <div className="graph-area">
+      <h3>{title}</h3>
+      <input type="file" accept=".txt" onChange={handleFileUpload} />
+      <input type="file" accept=".txt" onChange={handleFilePathsUpload} />
+      <button onClick={startAnimation} disabled={!isAnimationReady}> 
+        Iniciar Animación
+      </button>
+      <button onClick={resetAnimation}> 
+        Reset
+      </button>
+        <div className="graph-canvas">
+          <GraphCanvas
             draggable
             nodes={graphData.nodes}
             edges={graphData.edges}
             theme={darkTheme}
             layoutType="forceDirected3d"
             selections={selectedNodes} // Resaltar nodos seleccionados
-              sizingType="none"
-              edgeArrowPosition="none" // No arrows for undirected graph
-              cameraMode="rotate"
-              
-            >
-
-              <directionalLight position={[0, -4, 5]} intensity={1} />
-            </GraphCanvas>
-        </div>
+            sizingType="none"
+            edgeArrowPosition="none" // No arrows for undirected graph
+            cameraMode="rotate"
+          >
+            <directionalLight position={[0, -4, 5]} intensity={1} />
+          </GraphCanvas>
       </div>
-    
+    </div>
   );
 };
 
