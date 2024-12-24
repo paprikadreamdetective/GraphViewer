@@ -151,7 +151,7 @@ const GraphArea = ({ title }) => {
           <div className="graph-canvas">
             <GraphCanvas
             
-            
+            draggable
             nodes={graphData.nodes}
             edges={graphData.edges}
             theme={darkTheme}
@@ -163,7 +163,7 @@ const GraphArea = ({ title }) => {
               
             >
 
-              <directionalLight position={[0, 5, -4]} intensity={1} />
+              <directionalLight position={[0, -4, 5]} intensity={1} />
             </GraphCanvas>
         </div>
       </div>
