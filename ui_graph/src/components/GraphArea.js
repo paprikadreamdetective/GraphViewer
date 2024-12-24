@@ -38,12 +38,14 @@ const GraphArea = ({ title }) => {
 
 export default GraphArea;*/
 import './GraphArea.css';
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { darkTheme, GraphCanvas, directionalLight } from 'reagraph';
 
 const GraphArea = ({ title }) => {
   const [graphData, setGraphData] = useState({ nodes: [], edges: [] });
-
+  const [animationPath, setAnimationPath] = useState([]); // Guarda la secuencia de nodos
+  //const graphRef = useRef(null);
+  const [selectedNodes, setSelectedNodes] = useState([]); // Nodo seleccionado actualmente
   const handleFileUpload = async (event) => {
     const file = event.target.files[0];
     if (file) {
@@ -51,6 +53,30 @@ const GraphArea = ({ title }) => {
       const parsedGraph = parseGraphData(text);
       setGraphData(parsedGraph);
     }
+  };
+
+  const handleFilePathsUpload = async (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const text = await file.text();
+      if (text.includes('path:')) {
+        const parsedPaths = parsePathFile(text);
+        setAnimationPath(parsedPaths); // Almacena rutas para animación
+      } else {
+        const parsedGraph = parseGraphData(text);
+        setGraphData(parsedGraph);
+      }
+    }
+  };
+
+   // Función para parsear el archivo de rutas
+   const parsePathFile = (text) => {
+    const lines = text.trim().split('\n');
+    const paths = lines.map((line) => {
+      const match = line.match(/path:\s*\(([^)]+)\)/);
+      return match ? match[1].split(' ') : [];
+    });
+    return paths;
   };
 
   const parseGraphData = (text) => {
@@ -95,7 +121,24 @@ const GraphArea = ({ title }) => {
   };
   
   
-  
+  // Animación de nodos
+  useEffect(() => {
+    if (animationPath.length > 0) {
+      let index = 0;
+
+      const animate = () => {
+        if (index < animationPath.length) {
+          setSelectedNodes(animationPath[index]); // Actualiza nodos seleccionados
+          index++;
+          setTimeout(animate, 1000); // Pausa de 1 segundo
+        } else {
+          setSelectedNodes([]); // Limpia selección al finalizar
+        }
+      };
+
+      animate(); // Inicia animación
+    }
+  }, [animationPath]);
 
   return (
     
@@ -103,13 +146,16 @@ const GraphArea = ({ title }) => {
       <div className="graph-area">
         <h3>{title}</h3>
         <input type="file" accept=".txt" onChange={handleFileUpload} />
+        <input type="file" accept=".txt" onChange={handleFilePathsUpload} />
           <div className="graph-canvas">
             <GraphCanvas
+            
+            
             nodes={graphData.nodes}
             edges={graphData.edges}
             theme={darkTheme}
             layoutType="forceDirected3d"
-            
+            selections={selectedNodes} // Resaltar nodos seleccionados
               sizingType="none"
               edgeArrowPosition="none" // No arrows for undirected graph
               cameraMode="rotate"

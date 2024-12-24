@@ -26,7 +26,7 @@
 (defun generar-archivo-grafo ()
   "Genera un archivo con la representación del grafo."
   (let ((grafo ""))
-    (dolist (nodo '(s a b c d e f g))
+    (dolist (nodo '(s a b c d e f))
       (setf grafo (concatenate 'string grafo
                                (format nil "~a: ~a~%"  ;;in ~a~%"
                                        nodo
@@ -68,11 +68,11 @@
 (setf (get 's 'neighbors) '(a d)
       (get 'a 'neighbors) '(s b d)
       (get 'b 'neighbors) '(a c e)
-      (get 'c 'neighbors) '(b g)
+      (get 'c 'neighbors) '(b)
       (get 'd 'neighbors) '(s a e)
       (get 'e 'neighbors) '(b d f)
-      (get 'f 'neighbors) '(e g)
-      (get 'g 'neighbors) '(c f))
+      (get 'f 'neighbors) '(e)
+      )
 
 (setf (get 's 'coordinates) '(0 3)
       (get 'a 'coordinates) '(4 6)
@@ -81,7 +81,7 @@
       (get 'd 'coordinates) '(3 0)
       (get 'e 'coordinates) '(6 0)
       (get 'f 'coordinates) '(11 3)
-      (get 'g 'coordinates) '(14 6))
+      )
 
 
 (with-open-file (stream "caminos.txt"
@@ -90,7 +90,7 @@
                           :if-does-not-exist :create)
     (format stream "")) ;; Deja el archivo vacío
 ;; Ejecutar la búsqueda y generar los archivos
-(best-first-search-con-archivos 's 'g)
+(best-first-search-con-archivos 's 'f)
 
 
 
