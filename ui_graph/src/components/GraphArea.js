@@ -1,8 +1,10 @@
 import './GraphArea.css';
-import React, { useState } from 'react';
+import graph from '../graph/grafo.txt'
+import React, { useState, useEffect } from 'react';
 import { darkTheme, GraphCanvas, directionalLight } from 'reagraph';
 
 const GraphArea = ({ title }) => {
+  
   const [graphData, setGraphData] = useState({ nodes: [], edges: [] });
   const [animationPath, setAnimationPath] = useState([]); // Guarda la secuencia de nodos
   const [selectedNodes, setSelectedNodes] = useState([]); // Nodo seleccionado actualmente
@@ -101,10 +103,32 @@ const GraphArea = ({ title }) => {
     setSelectedNodes([]); 
   };
 
+  useEffect(() => {
+    // Función para leer el archivo al cambiar a la pestaña
+    const loadGraphFromFile = async () => {
+      try {
+        const response = await fetch(graph);
+        console.log(response);
+        if (response.ok) {
+          const text = await response.text();
+          console.log(text);
+          const parsedGraph = parseGraphData(text);
+          setGraphData(parsedGraph);
+        } else {
+          console.error('No se pudo leer el archivo:', response.statusText);
+        }
+      } catch (error) {
+        console.error('Error al cargar el archivo:', error);
+      }
+    };
+
+    loadGraphFromFile();
+  }, []); // Se ejecuta cada vez que FILE_PATH cambie o se renderice el componente.
+
   return (
     <div className="graph-area">
       <h3>{title}</h3>
-      <input type="file" accept=".txt" onChange={handleFileUpload} />
+      {/*<input type="file" accept=".txt" onChange={handleFileUpload} />*/}
       <input type="file" accept=".txt" onChange={handleFilePathsUpload} />
       <button onClick={startAnimation} disabled={!isAnimationReady}> 
         Iniciar Animación
