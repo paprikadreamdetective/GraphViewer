@@ -1,9 +1,9 @@
 import './GraphArea.css';
-import graph from '../graph/grafo.txt'
+//import graph from '../graph/grafo.txt'
 import React, { useState, useEffect } from 'react';
 import { darkTheme, GraphCanvas, directionalLight } from 'reagraph';
 
-const GraphArea = ({ title }) => {
+const GraphArea = ({ title, graph, visitedPaths}) => {
   
   const [graphData, setGraphData] = useState({ nodes: [], edges: [] });
   const [animationPath, setAnimationPath] = useState([]); // Guarda la secuencia de nodos
@@ -123,7 +123,7 @@ const GraphArea = ({ title }) => {
     };
 
     loadGraphFromFile();
-  }, []); // Se ejecuta cada vez que FILE_PATH cambie o se renderice el componente.
+  }, [graph]); // Se ejecuta cada vez que FILE_PATH cambie o se renderice el componente.
 
   return (
     <div className="graph-area">

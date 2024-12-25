@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
 import GraphArea from './components/GraphArea';
 import './App.css';
+import graph from './graph/grafo.txt' 
+import graph_dfs from './graph/grafo_dfs.txt' 
 
 function App() {
   return (
@@ -11,9 +13,9 @@ function App() {
       <div className="app-container">
         <Sidebar />
           <Routes>
-            <Route path="/dfs" element={<GraphArea title="Depth-First-Search" />}/>
-            <Route path="/bfs" element={<GraphArea title="Breadth-First-Search" />} />
-            <Route path="/bestfs" element={<GraphArea title="Best-First-Search" />} />
+            <Route path="/dfs" element={<GraphArea title="Depth-First-Search" graph={graph_dfs} />}/>
+            <Route path="/bfs" element={<GraphArea title="Breadth-First-Search" graph={graph} />} />
+            <Route path="/bestfs" element={<GraphArea title="Best-First-Search" graph={graph} visitedPaths={''} />} />
           </Routes>
         
       </div>
