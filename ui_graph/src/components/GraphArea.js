@@ -3,7 +3,7 @@ import './GraphArea.css';
 import React, { useState, useEffect } from 'react';
 import { darkTheme, GraphCanvas, directionalLight } from 'reagraph';
 
-const GraphArea = ({ title, graph, visitedPaths}) => {
+const GraphArea = ({ title, graph, visitedPaths, delayAnimation}) => {
   
   const [graphData, setGraphData] = useState({ nodes: [], edges: [] });
   const [animationPath, setAnimationPath] = useState([]); // Guarda la secuencia de nodos
@@ -88,7 +88,9 @@ const GraphArea = ({ title, graph, visitedPaths}) => {
         if (index < animationPath.length) {
           setSelectedNodes(animationPath[index]); // Actualiza nodos seleccionados
           index++;
-          setTimeout(animate, 250); // Pausa de 250 milisegundos
+          //setTimeout(animate, 250); // Pausa de 250 milisegundos
+          setTimeout(animate, delayAnimation);
+          
         } else {
           if (animationPath.length > 0) {
             setSelectedNodes(animationPath[animationPath.length - 1]);
