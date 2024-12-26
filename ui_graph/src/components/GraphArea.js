@@ -1,4 +1,5 @@
 import './GraphArea.css';
+import './ControlPanel.css';
 //import graph from '../graph/grafo.txt'
 import React, { useState, useEffect } from 'react';
 import { darkTheme, GraphCanvas, directionalLight } from 'reagraph';
@@ -146,14 +147,23 @@ const GraphArea = ({ title, graph, visitedPaths, delayAnimation}) => {
   return (
     <div className="graph-area">
       <h3>{title}</h3>
+
+      <div className="controls-container">
+    <button onClick={startAnimation} disabled={!isAnimationReady} className="modern-button">
+      <span className="icon">🎬</span> Start Animation
+    </button>
+    <button onClick={resetAnimation} className="modern-button">
+      <span className="icon">🔄</span> Reset
+    </button>
+  </div>
       {/*<input type="file" accept=".txt" onChange={handleFileUpload} />*/}
       {/*<input type="file" accept=".txt" onChange={handleFilePathsUpload} />*/}
-      <button onClick={startAnimation} disabled={!isAnimationReady} className="styled-button"> 
+      {/*<button onClick={startAnimation} disabled={!isAnimationReady} className="styled-button"> 
         <span className="button-icon">🎬</span> Start Animation
       </button>
       <button onClick={resetAnimation} className="styled-button"> 
         <span className="button-icon">🔄</span> Reset
-      </button>
+      </button>*/}
         <div className="graph-canvas">
           <GraphCanvas
             draggable
