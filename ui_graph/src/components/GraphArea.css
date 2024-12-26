@@ -28,4 +28,51 @@
   background-color: black;
   }
 
+  .graph-controls {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 10px; /* Espaciado con el panel */
+    align-items: center;
+  }
+  
+  .controls-container {
+    display: flex;
+    justify-content: flex-start; /* Alineación horizontal */
+    gap: 8px; /* Espaciado entre botones */
+    margin-bottom: 10px; /* Espaciado con el canvas */
+  }
+  
+  .styled-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background-color: #007bff; /* Azul */
+    color: white;
+    font-size: 14px;
+    padding: 6px 12px; /* Tamaño más compacto */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .styled-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+  }
+  
+  .styled-button:disabled {
+    background-color: #cccccc;
+    color: #666666;
+    cursor: not-allowed;
+  }
+  
+  .graph-area {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Ajusta al inicio del contenedor */
+    gap: 12px; /* Espaciado general */
+  }
+  
   

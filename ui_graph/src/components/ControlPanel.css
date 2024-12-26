@@ -1,0 +1,41 @@
+.controls-container {
+    display: flex;
+    justify-content: flex-start;
+    gap: 12px; /* Espacio entre botones */
+    margin-bottom: 15px;
+  }
+  
+  .modern-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #4caf50, #81c784); /* Gradiente verde */
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .modern-button .icon {
+    font-size: 18px; /* Tamaño del ícono */
+  }
+  
+  .modern-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(135deg, #388e3c, #66bb6a); /* Gradiente al pasar hover */
+  }
+  
+  .modern-button:disabled {
+    background: linear-gradient(135deg, #bdbdbd, #e0e0e0); /* Color gris para deshabilitado */
+    color: #757575;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+  

@@ -126,24 +126,6 @@ const GraphArea = ({ title, graph, visitedPaths, delayAnimation}) => {
     };
 
     const loadPathsFromFile = async () => {
-      /*try {
-        const response = await fetch(visitedPaths);
-        console.log(response);
-        if (response.ok) {
-          const text = await response.text();
-          console.log(text);
-          const parsedGraph = parseGraphData(text);
-          setGraphData(parsedGraph);
-        } else {
-          console.error('No se pudo leer el archivo:', response.statusText);
-        }
-      } catch (error) {
-        console.error('Error al cargar el archivo:', error);
-      }
-    };*/
-
-    //const file = event.target.files[0];
-    //const file = visitedPaths;
     const file_path = await fetch(visitedPaths);
     if (file_path) {
       const text = await file_path.text();
@@ -157,8 +139,6 @@ const GraphArea = ({ title, graph, visitedPaths, delayAnimation}) => {
       }
     }
   }
-
-
     loadGraphFromFile();
     loadPathsFromFile();
   }, [graph, visitedPaths]); // Se ejecuta cada vez que FILE_PATH cambie o se renderice el componente.
@@ -168,11 +148,11 @@ const GraphArea = ({ title, graph, visitedPaths, delayAnimation}) => {
       <h3>{title}</h3>
       {/*<input type="file" accept=".txt" onChange={handleFileUpload} />*/}
       {/*<input type="file" accept=".txt" onChange={handleFilePathsUpload} />*/}
-      <button onClick={startAnimation} disabled={!isAnimationReady}> 
-        Iniciar Animación
+      <button onClick={startAnimation} disabled={!isAnimationReady} className="styled-button"> 
+        <span className="button-icon">🎬</span> Start Animation
       </button>
-      <button onClick={resetAnimation}> 
-        Reset
+      <button onClick={resetAnimation} className="styled-button"> 
+        <span className="button-icon">🔄</span> Reset
       </button>
         <div className="graph-canvas">
           <GraphCanvas
