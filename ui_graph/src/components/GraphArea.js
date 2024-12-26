@@ -21,6 +21,7 @@ const GraphArea = ({ title, graph, visitedPaths, delayAnimation}) => {
 
   const handleFilePathsUpload = async (event) => {
     const file = event.target.files[0];
+    //const file = visitedPaths;
     if (file) {
       const text = await file.text();
       if (text.includes('path:')) {
@@ -124,14 +125,49 @@ const GraphArea = ({ title, graph, visitedPaths, delayAnimation}) => {
       }
     };
 
+    const loadPathsFromFile = async () => {
+      /*try {
+        const response = await fetch(visitedPaths);
+        console.log(response);
+        if (response.ok) {
+          const text = await response.text();
+          console.log(text);
+          const parsedGraph = parseGraphData(text);
+          setGraphData(parsedGraph);
+        } else {
+          console.error('No se pudo leer el archivo:', response.statusText);
+        }
+      } catch (error) {
+        console.error('Error al cargar el archivo:', error);
+      }
+    };*/
+
+    //const file = event.target.files[0];
+    //const file = visitedPaths;
+    const file_path = await fetch(visitedPaths);
+    if (file_path) {
+      const text = await file_path.text();
+      if (text.includes('path:')) {
+        const parsedPaths = parsePathFile(text);
+        setAnimationPath(parsedPaths); // Almacena rutas para animación
+        setIsAnimationReady(true); // Habilitar botón de animación
+      } else {
+        const parsedGraph = parseGraphData(text);
+        setGraphData(parsedGraph);
+      }
+    }
+  }
+
+
     loadGraphFromFile();
-  }, [graph]); // Se ejecuta cada vez que FILE_PATH cambie o se renderice el componente.
+    loadPathsFromFile();
+  }, [graph, visitedPaths]); // Se ejecuta cada vez que FILE_PATH cambie o se renderice el componente.
 
   return (
     <div className="graph-area">
       <h3>{title}</h3>
       {/*<input type="file" accept=".txt" onChange={handleFileUpload} />*/}
-      <input type="file" accept=".txt" onChange={handleFilePathsUpload} />
+      {/*<input type="file" accept=".txt" onChange={handleFilePathsUpload} />*/}
       <button onClick={startAnimation} disabled={!isAnimationReady}> 
         Iniciar Animación
       </button>
