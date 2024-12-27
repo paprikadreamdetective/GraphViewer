@@ -98,7 +98,7 @@ const GraphArea = ({ title, graph, visitedPaths, delayAnimation}) => {
           if (animationPath.length > 0) {
             setSelectedNodes(animationPath[animationPath.length - 1]);
           }
-          setTimeout(() => setShowPath(true), delayAnimation);
+          setTimeout(() => setShowPath(true), 500);
         }
       };
       animate(); 
@@ -158,10 +158,11 @@ const GraphArea = ({ title, graph, visitedPaths, delayAnimation}) => {
     <button onClick={resetAnimation} className="modern-button">
       <span className="icon">🔄</span> Reset
     </button>
+    
   </div>
   {showPath && (
         <div className="path-message">
-          <p>Path Traversed: <strong>{selectedNodes.join(' -> ')}</strong></p>
+          <p>Path Traversed: ( <strong>{selectedNodes.join(' ')}</strong> ) </p>
         </div>
       )}
       {/*<input type="file" accept=".txt" onChange={handleFileUpload} />*/}
@@ -173,6 +174,7 @@ const GraphArea = ({ title, graph, visitedPaths, delayAnimation}) => {
         <span className="button-icon">🔄</span> Reset
       </button>*/}
         <div className="graph-canvas">
+        
           <GraphCanvas
             draggable
             nodes={graphData.nodes}
@@ -184,6 +186,7 @@ const GraphArea = ({ title, graph, visitedPaths, delayAnimation}) => {
             edgeArrowPosition="none" // No arrows for undirected graph
             cameraMode="rotate"
           >
+            
             <directionalLight position={[0, -4, 5]} intensity={1} />
           </GraphCanvas>
       </div>
