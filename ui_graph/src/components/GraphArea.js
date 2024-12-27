@@ -10,7 +10,7 @@ const GraphArea = ({ title, graph, visitedPaths, delayAnimation}) => {
   const [animationPath, setAnimationPath] = useState([]); // Guarda la secuencia de nodos
   const [selectedNodes, setSelectedNodes] = useState([]); // Nodo seleccionado actualmente
   const [isAnimationReady, setIsAnimationReady] = useState(false); // Controla el estado del botón de animación
-
+  const [showPath, setShowPath] = useState(false);
   const handleFileUpload = async (event) => {
     const file = event.target.files[0];
     if (file) {
@@ -83,6 +83,7 @@ const GraphArea = ({ title, graph, visitedPaths, delayAnimation}) => {
   
   // Función para iniciar la animación
   const startAnimation = () => {
+    setShowPath(false);
     if (animationPath.length > 0) {
       let index = 0;
       const animate = () => {
@@ -97,6 +98,7 @@ const GraphArea = ({ title, graph, visitedPaths, delayAnimation}) => {
           if (animationPath.length > 0) {
             setSelectedNodes(animationPath[animationPath.length - 1]);
           }
+          setTimeout(() => setShowPath(true), delayAnimation);
         }
       };
       animate(); 
@@ -105,6 +107,7 @@ const GraphArea = ({ title, graph, visitedPaths, delayAnimation}) => {
 
   const resetAnimation = () => {
     setSelectedNodes([]); 
+    setShowPath(false); // Oculta el mensaje al reiniciar
   };
 
   useEffect(() => {
@@ -156,6 +159,11 @@ const GraphArea = ({ title, graph, visitedPaths, delayAnimation}) => {
       <span className="icon">🔄</span> Reset
     </button>
   </div>
+  {showPath && (
+        <div className="path-message">
+          <p>Path Traversed: <strong>{selectedNodes.join(' -> ')}</strong></p>
+        </div>
+      )}
       {/*<input type="file" accept=".txt" onChange={handleFileUpload} />*/}
       {/*<input type="file" accept=".txt" onChange={handleFilePathsUpload} />*/}
       {/*<button onClick={startAnimation} disabled={!isAnimationReady} className="styled-button"> 
