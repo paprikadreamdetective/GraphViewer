@@ -11,8 +11,9 @@
     align-items: center;
     justify-content: center;
     gap: 8px;
-    background: linear-gradient(135deg, #060606, #424242); /* Gradiente verde */
-    color: white;
+    /*background: linear-gradient(135deg, #060606, #424242); /* Gradiente verde */
+    background-color: #d1d1d1;
+    color: rgb(0, 0, 0);
     font-size: 14px;
     font-weight: bold;
     padding: 10px 20px;
@@ -28,13 +29,14 @@
   }
   
   .modern-button:hover {
+    color: rgb(239, 239, 239);
     transform: translateY(-2px);
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
     background: linear-gradient(135deg, #242424, #303130); /* Gradiente al pasar hover */
   }
   
   .modern-button:disabled {
-    background: linear-gradient(135deg, #bdbdbd, #e0e0e0); /* Color gris para deshabilitado */
+    background: linear-gradient(135deg, #adaaaa, #e0e0e0); /* Color gris para deshabilitado */
     color: #757575;
     cursor: not-allowed;
     box-shadow: none;

@@ -152,14 +152,14 @@ const GraphArea = ({ title, graph, visitedPaths, delayAnimation}) => {
       <h3>{title}</h3>
 
       <div className="controls-container">
-    <button onClick={startAnimation} disabled={!isAnimationReady} className="modern-button">
-      <span className="icon">🎬</span> Start Animation
-    </button>
-    <button onClick={resetAnimation} className="modern-button">
-      <span className="icon">🔄</span> Reset
-    </button>
+        <button onClick={startAnimation} disabled={!isAnimationReady} className="modern-button">
+          <span className="icon">🎬</span> Start Animation
+        </button>
+        <button onClick={resetAnimation} className="modern-button">
+          <span className="icon">🔄</span> Reset
+        </button>
     
-  </div>
+      </div>
   {showPath && (
         <div className="path-message">
           <p>Path Traversed: ( <strong>{selectedNodes.join(' ')}</strong> ) </p>
