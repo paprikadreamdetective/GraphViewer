@@ -1,6 +1,7 @@
 
 .graph-area {
     flex: 1;
+    text-align: center;
     display: flex;
     flex-direction: column;
     padding: 10px;
