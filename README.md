@@ -42,9 +42,3 @@ Este proyecto permite explorar y analizar visualmente los caminos recorridos por
 
 ---
 
-## 🔧 Instalación y Configuración
-
-### 1. Clonar el Repositorio
-```bash
-git clone <URL-del-repositorio>
-cd <nombre-del-repositorio>
