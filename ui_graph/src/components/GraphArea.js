@@ -9,8 +9,11 @@ const GraphArea = ({ title, graph, visitedPaths, delayAnimation}) => {
   const [graphData, setGraphData] = useState({ nodes: [], edges: [] });
   const [animationPath, setAnimationPath] = useState([]); // Guarda la secuencia de nodos
   const [selectedNodes, setSelectedNodes] = useState([]); // Nodo seleccionado actualmente
-  const [isAnimationReady, setIsAnimationReady] = useState(false); // Controla el estado del botón de animación
+  
   const [showPath, setShowPath] = useState(false);
+  const [isAnimationReady, setIsAnimationReady] = useState(false); // Controla el estado del botón de animación
+  const [isAnimating, setIsAnimating] = useState(false); // Nuevo estado
+
   const handleFileUpload = async (event) => {
     const file = event.target.files[0];
     if (file) {
@@ -84,6 +87,7 @@ const GraphArea = ({ title, graph, visitedPaths, delayAnimation}) => {
   // Función para iniciar la animación
   const startAnimation = () => {
     setShowPath(false);
+    setIsAnimating(true); // Deshabilita el botón
     if (animationPath.length > 0) {
       let index = 0;
       const animate = () => {
@@ -98,7 +102,10 @@ const GraphArea = ({ title, graph, visitedPaths, delayAnimation}) => {
           if (animationPath.length > 0) {
             setSelectedNodes(animationPath[animationPath.length - 1]);
           }
-          setTimeout(() => setShowPath(true), 500);
+          setTimeout(() => {
+            setShowPath(true); 
+            setIsAnimating(false);
+          }, 500);
         }
       };
       animate(); 
@@ -108,6 +115,7 @@ const GraphArea = ({ title, graph, visitedPaths, delayAnimation}) => {
   const resetAnimation = () => {
     setSelectedNodes([]); 
     setShowPath(false); // Oculta el mensaje al reiniciar
+    setIsAnimating(false); // Habilitar el botón al reiniciar
   };
 
   useEffect(() => {
@@ -152,7 +160,7 @@ const GraphArea = ({ title, graph, visitedPaths, delayAnimation}) => {
       <h3>{title}</h3>
 
       <div className="controls-container">
-        <button onClick={startAnimation} disabled={!isAnimationReady} className="modern-button">
+        <button onClick={startAnimation} disabled={!isAnimationReady || isAnimating} className="modern-button">
           <span className="icon">🎬</span> Start Animation
         </button>
         <button onClick={resetAnimation} className="modern-button">
