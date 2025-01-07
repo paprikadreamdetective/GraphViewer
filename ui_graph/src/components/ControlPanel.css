@@ -1,13 +1,16 @@
 .controls-container {
     
     display: flex;
-    /*flex-direction: column; /* Coloca los botones en columna */
     justify-content: center;
+    /*margin-left: 100px;*/
+     /* Coloca los botones en columna */
+    /*justify-content: center;*/
     /*justify-content: flex-start;*/
     align-items: center;
     flex-direction: row; /* Coloca los botones en columna */
-    gap: 12px; /* Espacio entre botones */
-    margin-bottom: 15px;
+    gap: 20px; /* Espacio entre botones */
+    /*margin-bottom: 15px;*/
+    margin: 15px auto;
   }
   
   .modern-button {

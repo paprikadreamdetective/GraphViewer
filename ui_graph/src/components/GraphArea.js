@@ -166,7 +166,6 @@ const GraphArea = ({ title, graph, visitedPaths, delayAnimation}) => {
         <button onClick={resetAnimation} className="modern-button">
           <span className="icon">🔄</span> Reset
         </button>
-    
       </div>
   {showPath && (
         <div className="path-message">
