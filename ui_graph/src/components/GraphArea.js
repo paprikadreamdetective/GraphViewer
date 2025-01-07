@@ -104,7 +104,7 @@ const GraphArea = ({ title, graph, visitedPaths, delayAnimation}) => {
           }
           setTimeout(() => {
             setShowPath(true); 
-            setIsAnimating(false);
+            setIsAnimating(true);
           }, 500);
         }
       };
@@ -166,10 +166,11 @@ const GraphArea = ({ title, graph, visitedPaths, delayAnimation}) => {
         <button onClick={resetAnimation} className="modern-button">
           <span className="icon">🔄</span> Reset
         </button>
+    
       </div>
   {showPath && (
         <div className="path-message">
-          <p>Path Traversed: ( <strong>{selectedNodes.join(' ')}</strong> ) </p>
+          <p>Path Traversed (A to S): ( <strong>{selectedNodes.join(' ')}</strong> ) </p>
         </div>
       )}
       {/*<input type="file" accept=".txt" onChange={handleFileUpload} />*/}
