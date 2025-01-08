@@ -1,6 +1,7 @@
 # Grafo de Caminos y Rutas Óptimas: Visualización con React
 
 Este proyecto combina **Common Lisp** y **React** para generar y visualizar grafos que representan caminos y rutas óptimas. Los caminos se calculan utilizando tres algoritmos: **DFS (Depth First Search)**, **BFS (Breadth First Search)** y **Best First Search**. El proyecto genera los datos en un archivo de texto y los visualiza dinámicamente con el componente `reagraph` en React.
+
 ---
 ## 📋 Descripción del Proyecto
 El flujo del proyecto consta de dos partes principales:
