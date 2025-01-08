@@ -25,11 +25,8 @@ Este proyecto permite explorar y analizar visualmente los caminos recorridos por
 - Generación de datos en formato legible para su visualización.
 - Visualización interactiva de grafos en una aplicación React usando `reagraph`.
 - Interfaz clara para explorar nodos, caminos y rutas óptimas.
-
 ---
-
 ## 🛠️ Requisitos Previos
-
 1. **Lenguajes y Herramientas Necesarias:**
    - [Common Lisp](https://common-lisp.net/)
    - [Node.js](https://nodejs.org/) (v16 o superior recomendado)
@@ -38,6 +35,5 @@ Este proyecto permite explorar y analizar visualmente los caminos recorridos por
 
 2. **Editor de Texto o IDE:**
    - Recomendado: [Visual Studio Code](https://code.visualstudio.com/) o cualquier editor que soporte Lisp y JavaScript.
-
 ---
 
