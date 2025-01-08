@@ -173,14 +173,6 @@ const GraphArea = ({ title, graph, visitedPaths, delayAnimation}) => {
           <p>Path Traversed (A to S): ( <strong>{selectedNodes.join(' ')}</strong> ) </p>
         </div>
       )}
-      {/*<input type="file" accept=".txt" onChange={handleFileUpload} />*/}
-      {/*<input type="file" accept=".txt" onChange={handleFilePathsUpload} />*/}
-      {/*<button onClick={startAnimation} disabled={!isAnimationReady} className="styled-button"> 
-        <span className="button-icon">🎬</span> Start Animation
-      </button>
-      <button onClick={resetAnimation} className="styled-button"> 
-        <span className="button-icon">🔄</span> Reset
-      </button>*/}
         <div className="graph-canvas">
         
           <GraphCanvas
