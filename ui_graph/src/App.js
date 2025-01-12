@@ -14,6 +14,7 @@ import graph_bfs from './graph/grafo_dfs.txt' ;
 import dfs_path from './graph/rutas_recorridas_dfs.txt';
 import bfs_path from './graph/rutas_recorridas_bfs.txt';
 import best_first_search_path from './graph/caminos.txt';
+import random_bfs_path from './graph/rutas_recorridas_bfs_random.txt';
 
 function App() {
   return (
@@ -24,6 +25,8 @@ function App() {
             <Route path="/dfs" element={<GraphArea title="Depth-First-Search" graph={graph_dfs} visitedPaths={dfs_path} delayAnimation={1000} />}/>
             <Route path="/bfs" element={<GraphArea title="Breadth-First-Search" graph={graph_bfs} visitedPaths={bfs_path} delayAnimation={250} />} />
             <Route path="/bestfs" element={<GraphArea title="Best-First-Search" graph={graph} visitedPaths={best_first_search_path} delayAnimation={250}/>} />
+            <Route path="/bfsrandom" element={<GraphArea title="Random-Breadth-First-Search" graph={graph} visitedPaths={random_bfs_path} delayAnimation={250}/>} />
+            <Route path="/bfscormen" element={<GraphArea title="Cormen-Breadth-First-Search" graph={graph} visitedPaths={best_first_search_path} delayAnimation={250}/>} />
             {/*<Route path="/bestfs" element={<LispDFS/>} />*/}
           </Routes>
         
