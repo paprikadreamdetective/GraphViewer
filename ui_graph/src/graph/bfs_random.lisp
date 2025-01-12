@@ -113,7 +113,7 @@
 
 ;; Probar `shuffle` para verificar que es realmente aleatorio
 
-(defvar LISTA '(a b c d e))
+;(defvar LISTA '(a b c d e))
 
-(print (shuffle '(a b c d e)))
-(print (random-element LISTA))
+;(print (shuffle '(a b c d e)))
+;(print (random-element LISTA))

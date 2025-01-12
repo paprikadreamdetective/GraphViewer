@@ -30,11 +30,11 @@ const Sidebar = () => {
           </li>
           <li className={selected === 'bfsrandom' ? 'selected' : ''}
             onClick={() => handleSelect('bfsrandom')}>
-            <Link to="/bfsrandom">Best-First-Search</Link>
+            <Link to="/bfsrandom">Random-Breadth-First-Search</Link>
           </li>
           <li className={selected === 'bfscormen' ? 'selected' : ''}
             onClick={() => handleSelect('bfscormen')}>
-            <Link to="/bfscormen">Best-First-Search</Link>
+            <Link to="/bfscormen">Cormen-Breadth-First-Search</Link>
           </li>
         </ul>
       </nav>
