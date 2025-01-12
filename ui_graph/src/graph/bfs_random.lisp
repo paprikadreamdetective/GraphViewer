@@ -1,9 +1,17 @@
+;; Inicializar la semilla aleatoria con el tiempo actual
+(setf *random-state* (make-random-state t))
+
+;(defun random-element (list)
+;  "Selecciona un elemento aleatorio de una lista."
+;  (nth (random (length list)) list))
+
+
 (defun shuffle (list)
   "Baraja una lista utilizando un algoritmo simple de Fisher-Yates."
   (let ((vec (coerce list 'vector)))
     (loop for i from (1- (length vec)) downto 1
           do (rotatef (aref vec i)
-                      (aref vec (random (1+ i)))))
+                      (aref vec (random (1+ i) *random-state*))))
     (coerce vec 'list)))
 
 (defun extend (path)
@@ -101,3 +109,11 @@
 ;; Ejecutar una búsqueda de profundidad entre A y E
 
 (print (breadth-first-search 'a 's))
+
+
+;; Probar `shuffle` para verificar que es realmente aleatorio
+
+(defvar LISTA '(a b c d e))
+
+(print (shuffle '(a b c d e)))
+(print (random-element LISTA))
