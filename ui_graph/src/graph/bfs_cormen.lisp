@@ -9,12 +9,38 @@
         (get start 'distance) 0
         (get start 'predecessor) nil))
 
+(defun guardar-en-txt (nombre-archivo contenido)
+  "Guarda el contenido en un archivo TXT, sobrescribiendo si ya existe."
+  (with-open-file (stream nombre-archivo
+                          :direction :output
+                          :if-exists :supersede
+                          :if-does-not-exist :create)
+    (format stream "~a" contenido)))
+
+(defun generar-archivo-grafo ()
+  "Genera un archivo con la representación del grafo."
+  (let ((grafo ""))
+    (dolist (nodo '(a b c d e f g h i j k l m n o p q r s))
+      (setf grafo (concatenate 'string grafo
+                               (format nil "~a: (~{~A~^ ~})~%" nodo (get nodo 'neighbors)))))
+    (guardar-en-txt "grafo_bfs_cormen.txt" grafo)))
+
+(defun guardar-caminos (camino)
+  "Guarda los caminos recorridos en un archivo TXT."
+  (with-open-file (stream "rutas_recorridas_bfs_cormen.txt"
+                          :direction :output
+                          :if-exists :append
+                          :if-does-not-exist :create)
+    (format stream "path: (~{~A~^ ~})~%" camino)))
+
 (defun bfs (graph start)
   "Implementa el algoritmo BFS según el libro de Cormen."
+  (generar-archivo-grafo) ; Generar archivo del grafo
   (initialize-graph graph start)
   (let ((queue (list start)))
     (loop while queue do
-          (let ((u (pop queue)))
+          (let ((u (pop queue)))       
+            (guardar-caminos (get-path start u))
             (dolist (v (get u 'neighbors))
               (when (eq (get v 'color) 'WHITE)
                 (setf (get v 'color) 'GRAY
@@ -22,6 +48,9 @@
                       (get v 'predecessor) u)
                 (push v queue)))
             (setf (get u 'color) 'BLACK)))))
+
+;; Guardar el camino al archivo
+;(guardar-caminos (get-path start u))            
 
 (defun get-path (start goal)
   "Devuelve el camino desde el nodo inicial hasta el nodo objetivo como una lista."
@@ -70,6 +99,3 @@
   (if path
       (format t "Ruta encontrada: ~a~%" path)
       (format t "No hay camino entre los nodos dados.~%")))
-
-
-
