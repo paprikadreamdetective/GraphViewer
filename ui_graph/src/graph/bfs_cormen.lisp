@@ -41,6 +41,7 @@
                   (setf (get u 'color) 'BLACK))))))))
 
 ;; Definimos las conexiones del grafo.
+
 (setf (get 'a 'neighbors) '(b c d e)
       (get 'b 'neighbors) '(a c g f)
       (get 'c 'neighbors) '(a d f b)
@@ -61,5 +62,17 @@
       (get 'r 'neighbors) '(o k s q)
       (get 's 'neighbors) '(p q r))
 
+"
+(setf (get 'r 'neighbors) '(s t w)
+      (get 's 'neighbors) '(r u v)
+      (get 't 'neighbors) '(u r)
+      (get 'u 'neighbors) '(s t y)
+      (get 'v 'neighbors) '(s w y)
+      (get 'w 'neighbors) '(r v x z)
+      (get 'x 'neighbors) '(w y)
+      (get 'y 'neighbors) '(u v x)
+      (get 'z 'neighbors) '(w x))
+      "
+
 ;; Ejecutamos BFS desde el nodo 'a' hasta 's' y guardamos todos los movimientos en el archivo.
-(bfs-with-all-movements '(a b c d e f g h i j k l m n o p q r s) 'a "movements.txt" 's)
+(bfs-with-all-movements '(a b c d e f g h i j k l m n o p q r s) 'b "movements.txt" 'j)
