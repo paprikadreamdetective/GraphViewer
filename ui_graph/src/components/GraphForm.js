@@ -76,11 +76,13 @@ function GraphForm() {
             endNode={endNode}
             setEndNode={setEndNode}
           />
-          
+          <h2>Result:</h2>
+          <pre>{result}</pre>
           <button type="submit">Submit</button>
         </form>
         <AdjacencyList nodes={nodes} />
         
+            
             {/*<div className="quadrant-2">
                 <AdjacencyList nodes={nodes} />
                 <div>
