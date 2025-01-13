@@ -18,7 +18,7 @@ const Sidebar = () => {
         <ul>
           <li className={selected === 'graphform' ? 'selected' : ''}
             onClick={() => handleSelect('graphform')}>
-            <Link to="/graphform">Input Graph</Link>
+            <Link to="/graphform">Graph Settings</Link>
           </li>
           <li className={selected === 'dfs' ? 'selected' : ''}
             onClick={() => handleSelect('dfs')}>
