@@ -1,0 +1,37 @@
+.node-list-container {
+    margin: 20px 0;
+  }
+
+  
+.node-list {
+    max-height: 200px; /* Tamaño máximo de la lista */
+    overflow-y: auto; /* Habilitar scroll vertical */
+    border: 1px solid #ccc; /* Opcional: Para una mejor visualización */
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  .node-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .node-item input {
+    margin-right: 10px;
+    padding: 5px;
+  }
+  
+  .node-item button {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .node-item button:hover {
+    background-color: #ff0000;
+  }

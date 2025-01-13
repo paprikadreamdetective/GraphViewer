@@ -1,9 +1,10 @@
 import React from "react";
+import './NodeInput.css';
 
 function NodeInput({ node, index, handleNodeChange, handleRemoveNode }) {
   return (
     <div className="node-input">
-      <label>Node {index + 1}:</label>
+      <label>Node:{index + 1}:</label>
       <input
         type="text"
         value={node.node}
@@ -11,7 +12,7 @@ function NodeInput({ node, index, handleNodeChange, handleRemoveNode }) {
         placeholder="Node name"
         required
       />
-      <label>Neighbors (comma separated):</label>
+      <label>Neighbors:</label>
       <input
         type="text"
         value={node.neighbors.join(", ")}

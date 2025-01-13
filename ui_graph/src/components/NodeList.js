@@ -1,6 +1,6 @@
 import React from "react";
 import NodeInput from "./NodeInput";
-
+import './NodeList.css';
 function NodeList({ nodes, setNodes }) {
   const handleAddNode = () => {
     setNodes([...nodes, { node: "", neighbors: [] }]);
@@ -23,8 +23,10 @@ function NodeList({ nodes, setNodes }) {
   };
 
   return (
-    <div className="node-section">
-      <h2>Nodes</h2>
+    <div className="node-list-container">
+    
+    <h2>Nodes</h2>
+    <div className="node-list">  
       {nodes.map((node, index) => (
         <NodeInput
           key={index}
@@ -34,9 +36,12 @@ function NodeList({ nodes, setNodes }) {
           handleRemoveNode={handleRemoveNode}
         />
       ))}
+        
+      </div>
       <button type="button" onClick={handleAddNode}>
         Add Node
       </button>
+    
     </div>
   );
 }
