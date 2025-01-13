@@ -3,6 +3,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
 import GraphArea from './components/GraphArea';
+import GraphForm from './components/GraphForm';
 
 import './App.css';
 import graph from './graph/grafo.txt'; 
@@ -29,7 +30,7 @@ function App() {
             <Route path="/bestfs" element={<GraphArea title="Best-First-Search" graph={graph} visitedPaths={best_first_search_path} delayAnimation={250}/>} />
             <Route path="/bfsrandom" element={<GraphArea title="Random-Breadth-First-Search" graph={graph} visitedPaths={random_bfs_path} delayAnimation={250}/>} />
             <Route path="/bfscormen" element={<GraphArea title="Cormen-Breadth-First-Search" graph={graph} visitedPaths={cormen_bfs_path} delayAnimation={1000}/>} />
-            {/*<Route path="/bestfs" element={<LispDFS/>} />*/}
+            <Route path="/graphform" element={<GraphForm/>} />
           </Routes>
         
       </div>

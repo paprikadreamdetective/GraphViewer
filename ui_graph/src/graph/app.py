@@ -1,13 +1,16 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
+
 import subprocess
 import os
 
 app = Flask(__name__)
-
+CORS(app)
 # Ruta para recibir el grafo y nodos
 @app.route('/process-graph', methods=['POST'])
 def process_graph():
     data = request.get_json()
+    print(data)
     adjacency_list = data.get('adjacency_list')
     start_node = data.get('start_node')
     end_node = data.get('end_node')
@@ -23,9 +26,11 @@ def process_graph():
 
         # Ejecutar código Lisp
         result = subprocess.run(["sbcl", "--script", "graph.lisp"], capture_output=True, text=True)
+        print(result)
         if result.returncode != 0:
             return jsonify({"error": "Error executing Lisp code", "details": result.stderr}), 500
 
+        
         return jsonify({"output": result.stdout})
     except Exception as e:
         return jsonify({"error": str(e)}), 500
@@ -33,7 +38,7 @@ def process_graph():
 
 def generate_lisp_code(adjacency_list, start_node, end_node):
     neighbors_code = "\n".join(
-        f"(setf (get '{node} 'neighbors) '{neighbors})" for node, neighbors in adjacency_list.items()
+        f"(setf (get '{node} 'neighbors) '({' '.join(neighbors)}))" for node, neighbors in adjacency_list.items()
     )
     lisp_template = f"""
 (defun extend (path)
