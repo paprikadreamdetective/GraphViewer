@@ -16,7 +16,7 @@ Este proyecto permite explorar y analizar visualmente los caminos recorridos por
 
 ## 🚀 Características
 
-- Implementación de tres algoritmos de búsqueda (DFS, BFS y Best First Search) en **Common Lisp**.
+- Implementación de cinco algoritmos de búsqueda (DFS, BFS , Best-First Search, BFS random y BFS de Cormen) en **Common Lisp**.
 - Generación de datos en formato legible para su visualización.
 - Visualización interactiva de grafos en una aplicación React usando `reagraph`.
 - Interfaz clara para explorar nodos, caminos y rutas óptimas.
@@ -31,4 +31,4 @@ Este proyecto permite explorar y analizar visualmente los caminos recorridos por
 2. **Editor de Texto o IDE:**
    - Recomendado: [Visual Studio Code](https://code.visualstudio.com/) o cualquier editor que soporte Lisp y JavaScript.
 ---
-
+## Descripción de los algoritmos de búsqueda
