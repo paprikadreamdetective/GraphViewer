@@ -90,5 +90,5 @@
                         :if-does-not-exist :create)
   (format stream "")) ; Deja el archivo vacío
 ;; Ejecutar una búsqueda de profundidad entre A y E
-(print (depth-first-search 'a 's))
+(depth-first-search 'a 's)
 

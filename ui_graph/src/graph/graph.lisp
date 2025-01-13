@@ -17,58 +17,58 @@
 (defun generar-archivo-grafo ()
   "Genera un archivo con la representacion del grafo."
   (let ((grafo ""))
-    (dolist (nodo '(A B C D E F G H I J K L M N O P Q R S))
+    (dolist (nodo '(A B C D E G F I H K J L M R O N Q P S))
       (setf grafo (concatenate 'string grafo
                                (format nil "~a: (~{~A~^ ~})~%" nodo (get nodo 'neighbors)))))
-    (guardar-en-txt "grafo_dfs.txt" grafo)))
+    (guardar-en-txt "grafo_bfs.txt" grafo)))
 
 (defun guardar-caminos (camino)
   "Guarda los caminos recorridos en un archivo TXT."
-  (with-open-file (stream "rutas_recorridas_dfs.txt"
+  (with-open-file (stream "rutas_recorridas_bfs.txt"
                           :direction :output
                           :if-exists :append
                           :if-does-not-exist :create)
     (format stream "path: (~{~A~^ ~})~%" camino)))
 
-(defun depth-first-search (start finish &optional (queue (list (list start))))
-  "Algoritmo DFS que genera los archivos correspondientes."
-  (generar-archivo-grafo)
+(defun breadth-first-search (start finish &optional (queue (list (list start))))
+  "Algoritmo BFS que genera los archivos correspondientes."
+  (generar-archivo-grafo) ; Generar archivo del grafo
   (cond
-    ((endp queue) nil)
-    ((eq finish (first (first queue)))
+    ((endp queue) nil) ; Si la cola está vacía
+    ((eq finish (first (first queue))) 
      (let ((path (reverse (first queue))))
-       (guardar-caminos path)
+       (guardar-caminos path) ; Guardar el camino final
        path))
     (t
      (let ((current-path (first queue)))
-       (guardar-caminos (reverse current-path))
-       (depth-first-search start finish
-                           (append (extend current-path) (rest queue)))))))
+       (guardar-caminos (reverse current-path)) ; Guardar cada camino recorrido
+       (breadth-first-search start finish
+                                          (append (rest queue) (extend current-path)))))))
 
 (setf (get 'A 'neighbors) '(B C D E))
-(setf (get 'B 'neighbors) '(A C G F))
-(setf (get 'C 'neighbors) '(A D F B))
-(setf (get 'D 'neighbors) '(A E G F C))
-(setf (get 'E 'neighbors) '(A H G D))
+(setf (get 'B 'neighbors) '(A C G F I))
+(setf (get 'C 'neighbors) '(A B D F))
+(setf (get 'D 'neighbors) '(A C E G F))
+(setf (get 'E 'neighbors) '(A D H G))
+(setf (get 'G 'neighbors) '(B D E F H K J I))
 (setf (get 'F 'neighbors) '(B C D G J L))
-(setf (get 'G 'neighbors) '(B D E H K J I F))
-(setf (get 'H 'neighbors) '(E K G))
-(setf (get 'I 'neighbors) '(B G J M L))
-(setf (get 'J 'neighbors) '(F G K O N M I))
-(setf (get 'K 'neighbors) '(H R O J G))
+(setf (get 'I 'neighbors) '(B G J L M))
+(setf (get 'H 'neighbors) '(E G K))
+(setf (get 'K 'neighbors) '(G H J R O))
+(setf (get 'J 'neighbors) '(G F I K O N M))
 (setf (get 'L 'neighbors) '(F I M Q P))
-(setf (get 'M 'neighbors) '(I J N P L))
-(setf (get 'N 'neighbors) '(J O Q P M))
-(setf (get 'O 'neighbors) '(J K R Q N))
+(setf (get 'M 'neighbors) '(I J L N P))
+(setf (get 'R 'neighbors) '(K O Q S))
+(setf (get 'O 'neighbors) '(K J R N Q))
+(setf (get 'N 'neighbors) '(J M O Q P))
+(setf (get 'Q 'neighbors) '(L R O N P S))
 (setf (get 'P 'neighbors) '(L M N Q S))
-(setf (get 'Q 'neighbors) '(L N O R S P))
-(setf (get 'R 'neighbors) '(O K S Q))
-(setf (get 'S 'neighbors) '(P Q R))
+(setf (get 'S 'neighbors) '(R Q P))
 
-(with-open-file (stream "rutas_recorridas_dfs.txt"
+(with-open-file (stream "rutas_recorridas_bfs.txt"
                         :direction :output
                         :if-exists :supersede
                         :if-does-not-exist :create)
   (format stream ""))
 
-(print (depth-first-search 'A 'S))
+(breadth-first-search 'J 'C)
