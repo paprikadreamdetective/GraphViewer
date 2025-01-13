@@ -1,12 +1,12 @@
 # Grafo de Caminos y Rutas Óptimas: Visualización con React
 
-Este proyecto combina **Common Lisp** y **React** para generar y visualizar grafos que representan caminos y rutas óptimas. Los caminos se calculan utilizando tres algoritmos: **DFS (Depth First Search)**, **BFS (Breadth First Search)** y **Best First Search**. El proyecto genera los datos en un archivo de texto y los visualiza dinámicamente con el componente `reagraph` en React.
+Este proyecto combina **Common Lisp** y **React** para generar y visualizar grafos que representan caminos y rutas óptimas. Los caminos se calculan implementando cinco algoritmos: **DFS (Depth First Search)**, **BFS (Breadth First Search)**, **Best First Search**, **Random Breadth First Search (r-BFS)** y **BFS de Cormen**. El proyecto incluye la generación de datos sobre los caminos que son exportados a un archivo de texto y la visualización dinámica con el componente `reagraph` en React.
 
 ---
 ## 📋 Descripción del Proyecto
 El flujo del proyecto consta de dos partes principales:
 1. **Generación de Datos con Common Lisp:**
-   - Los algoritmos DFS, BFS, Best-First Search, BFS con exploración aleatoria de nodos vecinos y BFS de Cormen se ejecutan para explorar un grafo, encontrar los caminos y calcular la mejor ruta.
+   - Los algoritmos DFS, BFS, Best First Search, r-BFS y BFS de Cormen se ejecutan para explorar un grafo, encontrar los caminos y calcular la mejor ruta.
    - Los resultados (grafo, caminos y ruta óptima) se exportan a un archivo `.txt`.
 2. **Visualización con React:**
    - El archivo generado por los scripts de Lisp se importa en la aplicación React.
@@ -31,4 +31,27 @@ Este proyecto permite explorar y analizar visualmente los caminos recorridos por
 2. **Editor de Texto o IDE:**
    - Recomendado: [Visual Studio Code](https://code.visualstudio.com/) o cualquier editor que soporte Lisp y JavaScript.
 ---
-## Descripción de los algoritmos de búsqueda
+
+## Descripción de los algoritmos de búsqueda - Implementación en Common Lisp
+
+1. **Breadth First Search (BFS).**
+
+2. **Depth First Search (DFS).**  
+Estratégia de búsqueda en profundidad en un gráfo
+
+3. **Best First Search.**  
+Heurística
+
+4. **Random Breadth First Search (r-BFS).**  
+Sigue el mismo principio que BFS, pero introduce una componente aleatorio al...
+
+5. **BFS de Cormen**
+
+## **Notas:**  
+Para el correcto desempeño del programa, cada archivo .lisp contiene, además de la implementación del algoritmo indicado, una serie de funciones auxiliares para la correcta generación del grafo, los caminos y la ruta seguida del nodo inicial al objetivo.
+
+---
+## Descripción del funcionamiento de la interfaz 
+
+---
+# Manual de usuario
