@@ -11,26 +11,30 @@
 
 
 .form-container {
-    /*display:block;
-    width: 40%;
-    margin: 0 auto;
-    font-family: Arial, sans-serif;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);*/
     display: grid;
-  grid-template-columns: 1fr 1fr; /* Dos columnas de igual ancho */
-  grid-template-rows: 1fr 1fr; /* Dos filas de igual altura */
-  height: 100vh; /* Altura completa de la ventana */
-  gap: 20px; /* Espacio entre cuadrantes */
+    grid-template-columns: 1fr 1fr; /* Dos columnas de igual ancho */
+    grid-template-rows: 1fr 1fr; /* Dos filas de igual altura */
+    height:100vh; /* Altura completa de la ventana */
+    gap: 10px; /* Espacio entre cuadrantes */
+    justify-content: center; /* Centra horizontalmente */
+    /*align-items: center; /* Centra verticalmente */
+    padding: 20px; /* Espaciado interno */
+    overflow: auto; /* Activa el scrollbar si el contenido excede */
   }
 
   .quadrant {
-    border: 1px solid #ccc; /* Opcional: Para ver los contornos de cada cuadrante */
+    /*border: 1px solid #ccc; 
     border-radius: 5px;
     padding: 10px;
-    background-color: #f9f9f9; /* Fondo ligero */
+    background-color: #f9f9f9; */
+    border: 1px solid #ccc; /* Bordes visibles para los cuadrantes */
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #f9f9f9; /* Fondo claro */
+  display: flex; /* Para centrar contenido interno */
+  justify-content: center; /* Centrado horizontal del contenido */
+  align-items: center; /* Centrado vertical del contenido */
+  min-height: 150px; /* Altura mínima para que se vea bien en pantallas pequeñas */
   }
   
   .quadrant-1 {

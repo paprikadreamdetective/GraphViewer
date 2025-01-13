@@ -76,17 +76,19 @@ function GraphForm() {
             endNode={endNode}
             setEndNode={setEndNode}
           />
+          
           <button type="submit">Submit</button>
         </form>
+        <AdjacencyList nodes={nodes} />
         
-        
-        <div className="quadrant-2">
-          <AdjacencyList nodes={nodes} />
-            <div>
-                <h2>Result:</h2>
-                <pre>{result}</pre>
-            </div>
-            </div>
+            {/*<div className="quadrant-2">
+                <AdjacencyList nodes={nodes} />
+                <div>
+                    <h2>Result:</h2>
+                    <pre>{result}</pre>
+                </div>
+            </div>*/}
+
         </div>
         </>
   );

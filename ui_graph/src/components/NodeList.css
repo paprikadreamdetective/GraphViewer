@@ -4,10 +4,10 @@
 
   
 .node-list {
-    max-height: 200px; /* Tamaño máximo de la lista */
+    max-height: 100px; /* Tamaño máximo de la lista */
     overflow-y: auto; /* Habilitar scroll vertical */
     border: 1px solid #ccc; /* Opcional: Para una mejor visualización */
-    padding: 10px;
+    padding: 20px;
     border-radius: 5px;
     background-color: #f9f9f9;
   }
