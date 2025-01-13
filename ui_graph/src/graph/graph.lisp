@@ -13,8 +13,5 @@
                                (append (extend (first queue)) (rest queue))))))
 
 (setf (get 'A 'neighbors) '(B C D E))
-(setf (get 'B 'neighbors) '(A C E F))
-(setf (get 'C 'neighbors) '(D E F G H I A))
-(setf (get 'D 'neighbors) '(I H E A))
 
-(print (depth-first-search 'A 'i))
+(print (depth-first-search 'A 'E))
