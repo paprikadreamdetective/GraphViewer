@@ -6,7 +6,7 @@ Este proyecto combina **Common Lisp** y **React** para generar y visualizar graf
 ## 📋 Descripción del Proyecto
 El flujo del proyecto consta de dos partes principales:
 1. **Generación de Datos con Common Lisp:**
-   - Los algoritmos DFS, BFS y Best First Search se ejecutan para explorar un grafo, encontrar los caminos y calcular la mejor ruta.
+   - Los algoritmos DFS, BFS, Best-First Search, BFS con exploración aleatoria de nodos vecinos y BFS de Cormen se ejecutan para explorar un grafo, encontrar los caminos y calcular la mejor ruta.
    - Los resultados (grafo, caminos y ruta óptima) se exportan a un archivo `.txt`.
 2. **Visualización con React:**
    - El archivo generado por los scripts de Lisp se importa en la aplicación React.
