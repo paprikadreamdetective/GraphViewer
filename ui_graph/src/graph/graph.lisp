@@ -20,30 +20,30 @@
     (dolist (nodo '(A B C D E G F I H K J L M R O N Q P S))
       (setf grafo (concatenate 'string grafo
                                (format nil "~a: (~{~A~^ ~})~%" nodo (get nodo 'neighbors)))))
-    (guardar-en-txt "grafo_bfs.txt" grafo)))
+    (guardar-en-txt "grafo_dfs.txt" grafo)))
 
 (defun guardar-caminos (camino)
   "Guarda los caminos recorridos en un archivo TXT."
-  (with-open-file (stream "rutas_recorridas_bfs.txt"
+  (with-open-file (stream "rutas_recorridas_dfs.txt"
                           :direction :output
                           :if-exists :append
                           :if-does-not-exist :create)
     (format stream "path: (~{~A~^ ~})~%" camino)))
 
-(defun breadth-first-search (start finish &optional (queue (list (list start))))
-  "Algoritmo BFS que genera los archivos correspondientes."
-  (generar-archivo-grafo) ; Generar archivo del grafo
+(defun depth-first-search (start finish &optional (queue (list (list start))))
+  "Algoritmo DFS que genera los archivos correspondientes."
+  (generar-archivo-grafo)
   (cond
-    ((endp queue) nil) ; Si la cola está vacía
-    ((eq finish (first (first queue))) 
+    ((endp queue) nil)
+    ((eq finish (first (first queue)))
      (let ((path (reverse (first queue))))
-       (guardar-caminos path) ; Guardar el camino final
+       (guardar-caminos path)
        path))
     (t
      (let ((current-path (first queue)))
-       (guardar-caminos (reverse current-path)) ; Guardar cada camino recorrido
-       (breadth-first-search start finish
-                                          (append (rest queue) (extend current-path)))))))
+       (guardar-caminos (reverse current-path))
+       (depth-first-search start finish
+                           (append (extend current-path) (rest queue)))))))
 
 (setf (get 'A 'neighbors) '(B C D E))
 (setf (get 'B 'neighbors) '(A C G F I))
@@ -65,10 +65,10 @@
 (setf (get 'P 'neighbors) '(L M N Q S))
 (setf (get 'S 'neighbors) '(R Q P))
 
-(with-open-file (stream "rutas_recorridas_bfs.txt"
+(with-open-file (stream "rutas_recorridas_dfs.txt"
                         :direction :output
                         :if-exists :supersede
                         :if-does-not-exist :create)
   (format stream ""))
 
-(breadth-first-search 'J 'C)
+(print (depth-first-search 'A 'S))

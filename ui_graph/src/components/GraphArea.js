@@ -1,7 +1,9 @@
 import './GraphArea.css';
 import './ControlPanel.css';
+import StartEndInput from './StartEndInput';
 //import graph from '../graph/grafo.txt'
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { darkTheme, GraphCanvas, directionalLight } from 'reagraph';
 
 const GraphArea = ({ title, graph, visitedPaths, delayAnimation}) => {
@@ -13,6 +15,16 @@ const GraphArea = ({ title, graph, visitedPaths, delayAnimation}) => {
   const [showPath, setShowPath] = useState(false);
   const [isAnimationReady, setIsAnimationReady] = useState(false); // Controla el estado del botón de animación
   const [isAnimating, setIsAnimating] = useState(false); // Nuevo estado
+
+  const [algorithm, setAlgorithm] = useState('');
+  const [startNode, setStartNode] = useState('');
+  const [endNode, setEndNode] = useState('');
+  const [result, setResult] = useState("");
+  const [nodes, setNodes] = useState([{ node: "", neighbors: [] }]);
+
+  const handleAlgorithmChange = (e) => setAlgorithm(e.target.value);
+  const handleStartNodeChange = (e) => setStartNode(e.target.value);
+  const handleEndNodeChange = (e) => setEndNode(e.target.value);
 
   const handleFileUpload = async (event) => {
     const file = event.target.files[0];
@@ -111,6 +123,64 @@ const GraphArea = ({ title, graph, visitedPaths, delayAnimation}) => {
       animate(); 
     }
   };
+  /*
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const adjacencyList = {};
+      nodes.forEach((node) => {
+        if (node.node) {
+          adjacencyList[node.node] = node.neighbors;
+        }
+      });
+
+      const response = await axios.post("http://localhost:5000/process-graph", {
+        adjacency_list: adjacencyList,
+        start_node: startNode,
+        end_node: endNode,
+        algorithm: title,
+      });
+
+      setResult(response.data.output);
+      //startAnimation();
+      //setIsEditing(false);
+    } catch (error) {
+      console.error(error);
+      setResult("Error processing graph.");
+    }
+
+  };*/
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const adjacencyList = {};
+      graphData.edges.forEach(({ source, target }) => {
+        if (!adjacencyList[source]) adjacencyList[source] = [];
+        adjacencyList[source].push(target);
+        if (!adjacencyList[target]) adjacencyList[target] = [];
+        adjacencyList[target].push(source);  // Solo si es grafo no dirigido
+      });
+  
+      const response = await axios.post("http://localhost:5000/process-graph", {
+        adjacency_list: adjacencyList,
+        start_node: startNode.trim(),
+        end_node: endNode.trim(),
+        algorithm: title,  // Asegúrate de usar el valor correcto
+      });
+  
+      if (response.data.output) {
+        setResult(response.data.output);
+      } else {
+        setResult("No path found or an error occurred.");
+      }
+      
+    } catch (error) {
+      console.error('Error:', error);
+      setResult("Error processing graph.");
+    }
+  };
+  
 
   const resetAnimation = () => {
     setSelectedNodes([]); 
@@ -129,6 +199,9 @@ const GraphArea = ({ title, graph, visitedPaths, delayAnimation}) => {
           console.log(text);
           const parsedGraph = parseGraphData(text);
           setGraphData(parsedGraph);
+          console.log(graphData);
+          setNodes(parsedGraph.nodes.map(({ id, neighbors }) => ({ node: id, neighbors })));
+          console.log(nodes);
         } else {
           console.error('No se pudo leer el archivo:', response.statusText);
         }
@@ -159,7 +232,7 @@ const GraphArea = ({ title, graph, visitedPaths, delayAnimation}) => {
     <div className="graph-area">
       <h3>{title}</h3>
 
-      <div className="controls-container">
+      {/*<div className="controls-container">
         <button onClick={startAnimation} disabled={!isAnimationReady || isAnimating} className="modern-button">
           <span className="icon">🎬</span> Start Animation
         </button>
@@ -167,10 +240,34 @@ const GraphArea = ({ title, graph, visitedPaths, delayAnimation}) => {
           <span className="icon">🔄</span> Reset
         </button>
     
-      </div>
+      </div>*/}
+      <div className="controls-container">
+      <form onSubmit={handleSubmit}>
+          <StartEndInput
+            startNode={startNode}
+            setStartNode={setStartNode}
+            endNode={endNode}
+            setEndNode={setEndNode}
+          />
+          <h2>Result:</h2>
+          <pre>{result}</pre>
+          <button type="submit">Submit</button>
+          
+        </form>
+        <button 
+          onClick={startAnimation} 
+          disabled={!isAnimationReady || isAnimating} 
+          className="modern-button">
+          <span className="icon">🎬</span> Start Animation
+        </button>
+        <button onClick={resetAnimation} className="modern-button">
+          <span className="icon">🔄</span> Reset
+        </button>
+        </div>
+
   {showPath && (
         <div className="path-message">
-          <p>Path Traversed (A to S): ( <strong>{selectedNodes.join(' ')}</strong> ) </p>
+          <p>Path Traversed ({startNode} to {endNode}): ( <strong>{selectedNodes.join(' ')}</strong> ) </p>
         </div>
       )}
         <div className="graph-canvas">

@@ -15,6 +15,8 @@ function GraphForm() {
   const [result, setResult] = useState("");
   const [isEditing, setIsEditing] = useState(true);
 
+
+  
      // Precargar el grafo desde el archivo grafo.txt
   useEffect(() => {
     const loadGraphFromFile = async () => {
