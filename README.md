@@ -35,28 +35,51 @@ Este proyecto permite explorar y analizar visualmente los caminos recorridos por
 ## Descripción de los algoritmos de búsqueda - Implementación en Common Lisp
 
 Los grafos fueron representados mediante listas de adyacencia, empleando una estructura similar a un diccionario. En esta representación, cada clave `key` corresponde a un nodo, y su valor asociado es una lista que contiene los nodos vecinos.  
-La siguiente estructura define un nodo y su lista de vecinos en Common Lisp:  
-```(setf (get 'node 'neighbors) '(b c d)) ```
+   - La siguiente estructura define un nodo y su lista de vecinos en Common Lisp:  
+      ```(setf (get 'node 'neighbors) '(b c d)) ```
       
 1. **Breadth First Search (BFS).**
+La exploración de grafos en amplitud es uno de los algoritmos más simples para búsqueda de caminos en grafos y el arquetipo de muchos algoritmos de grafos importantes modernos. 
 
-2. **Depth First Search (DFS).**  
+3. **Depth First Search (DFS).**  
 Estratégia de búsqueda en profundidad en un gráfo
+Implementación en pseudocódigo:  
+```
 
-3. **Best First Search.**  
-Heurística
+```
 
+4. **Best First Search.**  
+Método heurístico  
+Implementación en pseudocódigo:  
+```
 
-4. **Random Breadth First Search (r-BFS).**  
-Sigue el mismo principio que BFS, pero introduce una componente aleatorio al...
+```
 
-5. **BFS de Cormen**
+5. **Random Breadth First Search (r-BFS).**  
+Variante de BFS que sigue el mismo principio de búsqueda sistemática en amplitud, pero introduce una componente aleatoria al proceso de selección de los vecinos a explorar. En lugar de seguir un orden fijo, mezcla aleatorialmente el orden de aparición de los vecinos antes de añadirlos a la cola.
+Implementación en pseudocódigo:  
+```
+
+```
+
+6. **BFS de Cormen**
+Consiste en implementar el algoritmo **Breadth First Search** propuesto en el libro _Introduction to Algorithms_ de Thomas H. Cormen.
+Sigue un enfoque sistemático mediante el uso de un método de coloreado de los nodos: blancos = no visitados, grises = en la cola, negros = completamente explorados. Inicialmente, todos los nodos, a excepción del nodo raíz, se marcan como blancos, se les asigna una distancia inicial de 1 y sus predecesores se establecen en NIL. El nodo raíz se marca como gris, su distancia se establece en 0 y su predecesor en NIL. Posteriormente, se crea una cola Q, que inicialmente contiene solo el nodo raíz. Deben registrarse las distancias desde el nodo inicial y el nodo predecesor para cada nodo.  
+El algoritmo es de carácter iterativo y continúa su ejecución mientras existan vértices grises (en la frontera de exploración). En cada iteración, se extrae un vértice gris de la cola y se procesan sus vecinos. Una vez que todos los vecinos de un nodo han sido explorado, este se marca como negro (completamente explorado). El algoritmo garantiza que cada vértice alcanzable se descubra una sola vez y que las distancias calculadas sean las mínimas posibles. El árbol de búsqueda en amplitud generado puede variar dependiendo del orden en que se visiten los vecinos.  
+Implementación en pseudocódigo:
+```
+
+```
+
 
 ## **Notas:**  
 Para el correcto desempeño del programa, cada archivo .lisp contiene, además de la implementación del algoritmo indicado, una serie de funciones auxiliares para la correcta generación del grafo, los caminos y la ruta seguida del nodo inicial al objetivo.
+I. Función de  
 
 ---
 ## Descripción del funcionamiento de la interfaz 
+
+
 
 ---
 # Manual de usuario
