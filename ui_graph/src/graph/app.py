@@ -16,6 +16,12 @@ def process_graph():
     end_node = data.get('end_node')
     algorithm = data.get('algorithm')
 
+    for key in adjacency_list:
+        adjacency_list[key] = sorted(adjacency_list[key])
+
+    adjacency_list = dict(sorted(adjacency_list.items())) 
+    print("ORDENADOS")
+    print(adjacency_list)
     if not adjacency_list or not start_node or not end_node:
         return jsonify({"error": "Invalid input"}), 400
 
@@ -52,10 +58,11 @@ def process_graph():
 
 
 def generate_lisp_code_dfs(adjacency_list, start_node, end_node):
+    print(adjacency_list)
     neighbors_code = "\n".join(
         f"(setf (get '{node} 'neighbors) '({' '.join(neighbors)}))" for node, neighbors in adjacency_list.items()
     )
-
+    print(neighbors_code)
     '''
     lisp_template = f"""
 (defun extend (path)

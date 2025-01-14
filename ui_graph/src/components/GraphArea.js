@@ -161,7 +161,8 @@ const GraphArea = ({ title, graph, visitedPaths, delayAnimation}) => {
         if (!adjacencyList[target]) adjacencyList[target] = [];
         adjacencyList[target].push(source);  // Solo si es grafo no dirigido
       });
-  
+      console.log("Lista antes de enviar: ");
+      console.log(adjacencyList);
       const response = await axios.post("http://localhost:5000/process-graph", {
         adjacency_list: adjacencyList,
         start_node: startNode.trim(),

@@ -4,7 +4,7 @@ import NodeList from "./NodeList";
 import StartEndInput from "./StartEndInput";
 import AdjacencyList from "./AdjacencyList";
 import { parseGraphData } from "./utils"; // Importamos la función de utilidad
-import grafito from "../graph/grafo.txt";
+import grafito from "../graph/grafo_dfs.txt";
 
 import './GraphForm.css';
 
@@ -46,7 +46,12 @@ function GraphForm() {
           adjacencyList[node.node] = node.neighbors;
         }
       });
-
+      Object.keys(adjacencyList).forEach((key) => {
+        adjacencyList[key].sort();  // Orden alfabético
+      });
+      
+      console.log("Lista antes de enviar: ");
+      console.log(adjacencyList);
       const response = await axios.post("http://localhost:5000/process-graph", {
         adjacency_list: adjacencyList,
         start_node: startNode,
