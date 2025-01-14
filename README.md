@@ -34,10 +34,9 @@ Este proyecto permite explorar y analizar visualmente los caminos recorridos por
 
 ## Descripción de los algoritmos de búsqueda - Implementación en Common Lisp
 
-Los grafos son representados como listas de adyacencia, como una estructura tipo diccionario, donde cada key es un nodo y sus valores correspondientes son una lista de vecinos.  
-**Estructura en Common Lisp:**  
-(setf (get 'node 'neighbors) '(b c d)  
-      )  
+Los grafos fueron representados mediante listas de adyacencia, empleando una estructura similar a un diccionario. En esta representación, cada clave `key` corresponde a un nodo, y su valor asociado es una lista que contiene los nodos vecinos.  
+La siguiente estructura define un nodo y su lista de vecinos en Common Lisp:  
+```(setf (get 'node 'neighbors) '(b c d)) ```
       
 1. **Breadth First Search (BFS).**
 
