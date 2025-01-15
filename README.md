@@ -82,120 +82,127 @@ I. Función de
 
 
 ---
-Manual de Instalación y Ejecución del Proyecto
+# Manual de Instalación y Ejecución del Proyecto
 
-Este documento proporciona los pasos necesarios para instalar y ejecutar el proyecto de visualización de algoritmos de búsqueda en grafos utilizando React, Flask y Common Lisp en un sistema operativo Windows.
+Este documento proporciona los pasos necesarios para instalar y ejecutar el proyecto de visualización de algoritmos de búsqueda en grafos utilizando **React**, **Flask** y **Common Lisp** en un sistema operativo **Windows**.
 
-Requisitos Previos
+---
+
+## Requisitos Previos
 
 Antes de comenzar, asegúrate de que tu sistema tenga lo siguiente:
 
-1. Node.js y npm
+### 1. Node.js y npm
+- Descarga e instala Node.js desde [Node.js](https://nodejs.org/).
+- Verifica la instalación:
+  ```bash
+  node -v
+  npm -v
+  ```
 
-Descarga e instala Node.js desde Node.js.
+### 2. Python
+- Descarga e instala Python 3.9 o superior desde [Python.org](https://www.python.org/downloads/).
+- Durante la instalación, asegúrate de seleccionar la opción **"Add Python to PATH"**.
+- Verifica la instalación:
+  ```bash
+  python --version
+  pip --version
+  ```
 
-Verifica la instalación:
+### 3. Common Lisp (SBCL)
+- Descarga e instala Steel Bank Common Lisp (SBCL) desde [SBCL](http://www.sbcl.org/platform-table.html).
+- Añade la ruta de SBCL a las variables de entorno del sistema para poder ejecutar el comando `sbcl` desde cualquier ubicación.
+- Verifica la instalación:
+  ```bash
+  sbcl --version
+  ```
 
-node -v
-npm -v
+### 4. Git (opcional, para clonar el repositorio)
+- Descarga e instala Git desde [Git for Windows](https://git-scm.com/download/win).
 
-2. Python
+---
 
-Descarga e instala Python 3.9 o superior desde Python.org.
+## Instalación del Proyecto
 
-Durante la instalación, asegúrate de seleccionar la opción "Add Python to PATH".
-
-Verifica la instalación:
-
-python --version
-pip --version
-
-3. Common Lisp (SBCL)
-
-Descarga e instala Steel Bank Common Lisp (SBCL) desde SBCL.
-
-Añade la ruta de SBCL a las variables de entorno del sistema para poder ejecutar el comando sbcl desde cualquier ubicación.
-
-Verifica la instalación:
-
-sbcl --version
-
-4. Git (opcional, para clonar el repositorio)
-
-Descarga e instala Git desde Git for Windows.
-
-Instalación del Proyecto
-
-1. Clonar el Repositorio (opcional)
-
+### 1. Clonar el Repositorio (opcional)
 Si tienes acceso al repositorio remoto, puedes clonarlo:
-
+```bash
 git clone https://github.com/tu-usuario/tu-repositorio.git
 cd tu-repositorio
+```
 
 Si no, coloca los archivos del proyecto en una carpeta de tu elección.
 
-2. Instalación del Frontend (React)
+### 2. Instalación del Frontend (React)
 
-Paso 1: Navegar al directorio del frontend
-
+#### Paso 1: Navegar al directorio del frontend
+```bash
 cd frontend
+```
 
-Paso 2: Instalar dependencias
-
+#### Paso 2: Instalar dependencias
+```bash
 npm install
+```
 
-Paso 3: Ejecutar la aplicación React
-
+#### Paso 3: Ejecutar la aplicación React
+```bash
 npm start
-
+```
 Esto abrirá una ventana del navegador con la interfaz de usuario del proyecto.
 
-3. Instalación del Backend (Flask)
+### 3. Instalación del Backend (Flask)
 
-Paso 1: Crear un entorno virtual (opcional, recomendado)
-
+#### Paso 1: Crear un entorno virtual (opcional, recomendado)
+```bash
 python -m venv venv
-
+```
 Activa el entorno virtual:
-
+```bash
 venv\Scripts\activate
+```
 
-Paso 2: Instalar dependencias de Python
-
+#### Paso 2: Instalar dependencias de Python
+```bash
 pip install -r requirements.txt
-
-El archivo requirements.txt debe contener las siguientes dependencias:
-
+```
+El archivo `requirements.txt` debe contener las siguientes dependencias:
+```
 Flask
 Flask-Cors
+```
 
-Paso 3: Ejecutar la aplicación Flask
-
+#### Paso 3: Ejecutar la aplicación Flask
 En el directorio del backend:
-
+```bash
 python app.py
+```
+Esto iniciará el servidor en `http://127.0.0.1:5000/`.
 
-Esto iniciará el servidor en http://127.0.0.1:5000/.
+---
 
-Configuración y Ejecución del Proyecto
+## Configuración y Ejecución del Proyecto
 
-Asegúrate de que el frontend y el backend estén ejecutándose correctamente.
+1. Asegúrate de que el frontend y el backend estén ejecutándose correctamente.
+2. Interactúa con la aplicación desde el navegador para enviar grafos y ejecutar los algoritmos.
 
-Interactúa con la aplicación desde el navegador para enviar grafos y ejecutar los algoritmos.
+---
 
-Problemas Comunes
+## Problemas Comunes
 
-Error: "sbcl no reconocido como comando"
-
+### Error: "sbcl no reconocido como comando"
 Solución: Asegúrate de que SBCL está agregado al PATH del sistema.
 
-Error de dependencias de Python
+### Error de dependencias de Python
+Solución: Ejecuta `pip install -r requirements.txt` nuevamente o instala manualmente cada paquete.
 
-Solución: Ejecuta pip install -r requirements.txt nuevamente o instala manualmente cada paquete.
-
-Puertos en uso
-
+### Puertos en uso
 Solución: Detén cualquier proceso que esté usando los puertos 3000 (React) o 5000 (Flask).
+
+---
+
+Con estos pasos, deberías tener tu proyecto completamente configurado y ejecutándose en tu máquina Windows.
+
+
 
 
