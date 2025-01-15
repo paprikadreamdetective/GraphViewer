@@ -65,7 +65,8 @@ Fin Mientras
 ```
 
 2. **Depth First Search (DFS).**  
-Estratégia de búsqueda en profundidad en un gráfo
+Estratégia de búsqueda en profundidad en un grafo, donde se recorren todos los vértices adyacentes de uno a uno. DFS explora tan lejos como sea posible a lo largo de un mismo camino antes de retroceder para explorar los subyacentes, siguiendo el principio de "profundidad antes que amplitud".  
+Su funcionamiento se basa en partir de un nodo inicial o raíz, que es marcado como "visitado" para no procesarlo nuevamente. Si el nodo vecino no ha sido visitado, se realiza una llamada recursiva para ese nodo, cuando ya ha sido visitado, el nodo se omite. Cuando no quedan m[as vecinos por explorar, el algoritmo retrocede al nodo anterior, y al encontrar el objetivo se retorna el camino. Emplea una pila como estructura de datos.  
 Implementación en pseudocódigo:  
 ```
 
