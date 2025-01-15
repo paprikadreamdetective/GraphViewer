@@ -46,7 +46,7 @@ Partiendo de un nodo inicial o raíz, se exploran todos sus nodos vecinos adyace
 BFS(Grafo, Nodo, Objetivo)
 ''' Crear un diccionario 'Visitados' para registrar los nodos visitados y de dónde se visitaron.
     Crear una cola 'Cola' (estructura FIFO).
-    Inicializar 'Visitados[Nodo]' con 'NULO' (El odo raíz no tiene predecesor).
+    Inicializar 'Visitados[Nodo]' con 'NULO' (El nodo raíz no tiene predecesor).
     Agregar 'Nodo' a 'Cola'. '''
 Mientras 'Cola' no esté vacía:
       m = DESENCOLAR(Cola)  # Obtener el siguiente nodo
@@ -69,6 +69,25 @@ Estratégia de búsqueda en profundidad en un grafo, donde se recorren todos los
 Su funcionamiento se basa en partir de un nodo inicial o raíz, que es marcado como "visitado" para no procesarlo nuevamente. Si el nodo vecino no ha sido visitado, se realiza una llamada recursiva para ese nodo, cuando ya ha sido visitado, el nodo se omite. Cuando no quedan más vecinos por explorar, el algoritmo retrocede al nodo anterior, y al encontrar el objetivo se retorna el camino. Emplea una pila como estructura de datos.  
 ```
 ## Implementación en pseudocódigo:
+DFS(Grafo, Nodo, Objetivo)
+''' Crear un diccionario 'Visitados' para registrar los nodos visitados.
+    Crear una pila 'Pila' (estructura LIFO).
+    Inicializar 'Visitados[Nodo]' con 'FALSO' (El nodo raíz no ha sido visitado aún).
+    Agregar 'Nodo' a 'Pila'. '''
+Mientras 'Pila' no esté vacía:
+      m = DESAPILAR(Pila)  # Obtener el siguiente nodo
+       Si m == Objetivo:  # Si encontramos el objetivo
+           Crear una lista 'Camino' vacía.
+           Mientras m no sea 'NULO':
+               Agregar m a 'Camino'.
+               m = Visitados[m]  # Retroceder al nodo predecesor.
+           Devolver 'Camino' invertido.
+       Para cada Vecino en Grafo[m]:
+           Si Vecino no está en 'Visitados':
+               Visitados[Vecino] = m  # Registrar el predecesor.
+               APILAR(Pila, Vecino).
+Fin Mientras
+   Devolver 'NULO' si no se encuentra un camino.
 ```
 
 3. **Best First Search.**  
@@ -139,8 +158,28 @@ BFS(G, s)
 
 
 ## **Notas:**  
-Para el correcto desempeño del programa, cada archivo .lisp contiene, además de la implementación del algoritmo indicado, una serie de funciones auxiliares para la correcta generación del grafo, los caminos y la ruta seguida del nodo inicial al objetivo.
-I. Función de  
+Para el correcto desempeño del programa, cada archivo .lisp contiene, además de la implementación del algoritmo indicado, una serie de funciones auxiliares para la correcta generación del grafo, los caminos y la ruta seguida del nodo inicial al objetivo.  
+1. Función **_extend (path)_**  
+Genera los caminos posibles a partir de un nodo, extendiendo el camino actual hacia sus vecinos.
+```
+Funcion extend(path)
+    Imprime el camino invertido
+    Para cada nuevo nodo en los vecinos del primer nodo de path (sin repetir los nodos en path):
+        Crear un nuevo camino que agregue ese nodo al principio de path
+    Retornar los nuevos caminos generados
+Fin Funcion
+```
+
+2. Función **_guardar-en-txt_**
+Permite guardar información en un archivo de texto, sobrescribiendo el archivo si ya existe.  
+```
+Funcion guardar-en-txt(nombre-archivo, contenido)
+    Abrir el archivo con el nombre 'nombre-archivo' para escritura.
+    Si el archivo ya existe, sobrescribirlo; si no, crearlo.
+    Escribir el 'contenido' en el archivo.
+    Cerrar el archivo.
+Fin Funcion
+```
 
 ---
 ## Descripción del funcionamiento de la interfaz 
