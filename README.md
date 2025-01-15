@@ -114,14 +114,14 @@ Sigue los pasos para configurar tu entorno.
 
 ### 1️⃣ Clona el Repositorio
 ```bash
-git clone https://github.com/tu-repositorio/proyecto-grafos.git
-cd proyecto-grafos
+git clone [https://github.com/tu-repositorio/proyecto-grafos.git](https://github.com/paprikadreamdetective/GraphViewer.git)
 ```
 
 ### 2️⃣ Configuración del Frontend
 1. Navega a la carpeta del frontend:
    ```bash
-   cd frontend
+   cd GraphViewer
+   cd ui_graph
    ```
 2. Instala las dependencias:
    ```bash
@@ -135,11 +135,17 @@ cd proyecto-grafos
 
 ### 3️⃣ Configuración del Backend
 1. Asegúrate de estar en la carpeta raíz del proyecto.
-2. Instala las dependencias de Python:
+    ```bash
+   cd GraphViewer
+   cd ui_graph
+   cd src
+   cd graph
+   ```
+3. Instala las dependencias de Python:
    ```bash
    pip install Flask Flask-CORS
    ```
-3. Ejecuta el servidor:
+4. Ejecuta el servidor:
    ```bash
    python app.py
    ```
