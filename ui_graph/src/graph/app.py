@@ -29,7 +29,6 @@ def process_graph():
         # Crear archivo Lisp con la representación del grafo
         #lisp_code = generate_lisp_code(adjacency_list, start_node, end_node)
         lisp_code = str()
-
         if algorithm == "Depth-First-Search":
             lisp_code = generate_lisp_code_dfs(adjacency_list, start_node, end_node)
         elif algorithm == "Breadth-First-Search":
@@ -38,10 +37,9 @@ def process_graph():
             lisp_code = generate_lisp_code_best_first_search(adjacency_list, start_node, end_node)
         elif algorithm == "Random-Breadth-First-Search":
             lisp_code = generate_lisp_code_random_bfs(adjacency_list, start_node, end_node)
-        '''
         elif algorithm == "Cormen-Breadth-First-Search":
-            lisp_code = generate_lisp_code(adjacency_list, start_node, end_node)
-        '''
+            lisp_code = generate_lisp_code_bfs_cormen(adjacency_list, start_node, end_node)
+        
         
         with open("graph.lisp", "w") as f:
             f.write(lisp_code)
@@ -49,11 +47,13 @@ def process_graph():
         result = subprocess.run(["sbcl", "--script", "graph.lisp"], capture_output=True, text=True)
         print(result)
         if result.returncode != 0:
+            print("error aqui")
             return jsonify({"error": "Error executing Lisp code", "details": result.stderr}), 500
-
+        print(result.stdout)
         # return jsonify({"output": result.stdout})
         return jsonify({"output": "Update Graph"})
     except Exception as e:
+        print("error aqui")
         return jsonify({"error": str(e)}), 500
 
 
@@ -480,7 +480,7 @@ def generate_lisp_code_bfs_cormen(adjacency_list, start_node, end_node):
     (bfs-with-all-movements '(a b c d e f g h i j k l m n o p q r s) '{start_node} "movements.txt" '{end_node})
 
     """
-
+    return lisp_template
 
 if __name__ == '__main__':
     app.run(debug=True)
