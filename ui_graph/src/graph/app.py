@@ -149,7 +149,7 @@ def generate_lisp_code_dfs(adjacency_list, start_node, end_node):
 
 def generate_lisp_code_bfs(adjacency_list, start_node, end_node):
     neighbors_code = "\n".join(
-        f"(setf (get '{node} 'neighbors) '({{' '.join(neighbors)}}))" for node, neighbors in adjacency_list.items()
+        f"(setf (get '{node} 'neighbors) '({' '.join(neighbors)}))" for node, neighbors in adjacency_list.items()
     )
 
     '''
