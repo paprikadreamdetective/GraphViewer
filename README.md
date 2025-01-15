@@ -91,10 +91,29 @@ Fin Mientras
 ```
 
 3. **Best First Search.**  
-Método heurístico  
+A diferencia de los dos algoritmos descritos previamente, el Best First Search se incluye en la categoría de **búsqueda heurística o búsqueda informada** para la exploración de caminos en grafos.
+Para explorar el grafo de manera informada, se emplea una _cola de prioridad_ para almacenar los costos de los nodos que tienen el valor de función de evaluación más bajo. Por lo tanto, la implementación es una variación del BFS, pero cambiando la cola original por una cola de prioridad.
+Este algoritmo emplea una heurística para elegir el mejor camino a seguir, basado en la distancia del nodo actual al nodo objetivo. La prioridad es siempre expandir el camino que parece más prometedor en términos de proximidad al objetivo. En el código implementado, la heurística utilizada fue la distancia recta (distancia euclidiana) entre el nodo actual y el nodo objetivo.
+Si la cola está vacía, finaliza la búsqueda. Si el nodo objetivo se encuentra en el primer camino de la cola, se calcula el costo total del camino y se guarda en el archivo, si no, se extiende el camino actual, se calcula su costo, y se agrega a la cola después de ordenar los caminos según la heurística (distancia hasta el nodo objetivo). Finalmente, retorna el camino más corto desde el nodo de inicio hasta el nodo objetivo.  
 ```
 ## Implementación en pseudocódigo:
+Función BestFirstSearch(inicio, objetivo)
+    Crear una cola con el camino de inicio.
+    Mientras la cola no esté vacía:
+        Extraer el primer camino de la cola (camino actual).
+        Si el nodo final del camino es el objetivo:
+            Calcular el costo total del camino
+            Guardar el camino y el costo en un archivo
+            Devolver el camino.
+        Si no:
+            Extender el camino actual agregando los vecinos no visitados.
+            Ordenar los caminos extendidos por la distancia heurística al objetivo.
+            Añadir los caminos ordenados a la cola.
+    Si la cola se vacía, no se encuentra solución.
+    Devolver NULO.
 ```
+Para desarrollar adecuadamente el método, se hizo uso de funciones auxiliares en **Common Lisp** que permitieron la modificación del método clásico. Estas se describen a continuación:  
+   - 
 
 4. **Random Breadth First Search (r-BFS).**  
 Variante de BFS que sigue el mismo principio de búsqueda sistemática en amplitud, pero introduce una componente aleatoria al proceso de selección de los vecinos a explorar. En lugar de seguir un orden fijo, mezcla aleatorialmente el orden de aparición de los vecinos antes de añadirlos a la cola.
@@ -202,11 +221,6 @@ Funcion guardar-caminos(camino)
     Cerrar el archivo.
 Fin Funcion
 ```
----
-## Descripción del funcionamiento de la interfaz 
-
-
-
 ---
 # 📚 Proyecto de Búsqueda en Grafos
 
