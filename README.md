@@ -66,7 +66,7 @@ Fin Mientras
 
 2. **Depth First Search (DFS).**  
 Estratégia de búsqueda en profundidad en un grafo, donde se recorren todos los vértices adyacentes de uno a uno. DFS explora tan lejos como sea posible a lo largo de un mismo camino antes de retroceder para explorar los subyacentes, siguiendo el principio de "profundidad antes que amplitud".  
-Su funcionamiento se basa en partir de un nodo inicial o raíz, que es marcado como "visitado" para no procesarlo nuevamente. Si el nodo vecino no ha sido visitado, se realiza una llamada recursiva para ese nodo, cuando ya ha sido visitado, el nodo se omite. Cuando no quedan más vecinos por explorar, el algoritmo retrocede al nodo anterior, y al encontrar el objetivo se retorna el camino. Emplea una pila como estructura de datos.  
+Su funcionamiento se basa en partir de un nodo inicial o raíz, que es marcado como "visitado" para no procesarlo nuevamente. Si el nodo vecino no ha sido visitado, se realiza una llamada recursiva para ese nodo, cuando ya ha sido visitado, este es omitido. Cuando no quedan más vecinos por explorar, el algoritmo retrocede al nodo anterior, y al encontrar el objetivo se retorna el camino. Emplea una pila como estructura de datos.  
 ```
 ## Implementación en pseudocódigo:
 DFS(Grafo, Nodo, Objetivo)
@@ -121,8 +121,8 @@ r-BFS(Grafo, Nodo, Objetivo)
                 ENCOLAR(Cola, Vecino).
 Fin Mientras
    Devolver 'NULO' si no se encuentra un camino.
-
 ```
+Como se observa, esta modificación requiere realizar una mezcla de los vecinos en la lista de caminos para aleatorizar la selección del siguiente nodo a visitar, lo que puede reducir el tamaño de la exploración en contraste con el método sistemático. Para este fin, se implementó una función auxiliar en **Common Lisp**  
 
 5. **BFS de Cormen.**  
 Consiste en implementar el algoritmo **Breadth First Search** propuesto en el libro [_Introduction to Algorithms_](https://dl.ebooksworld.ir/books/Introduction.to.Algorithms.4th.Leiserson.Stein.Rivest.Cormen.MIT.Press.9780262046305.EBooksWorld.ir.pdf) de Thomas H. Cormen.  
@@ -157,10 +157,11 @@ BFS(G, s)
 ```
 
 
-## **Notas:**  
+## **Notas adicionales:**  
 Para el correcto desempeño del programa, cada archivo .lisp contiene, además de la implementación del algoritmo indicado, una serie de funciones auxiliares para la correcta generación del grafo, los caminos y la ruta seguida del nodo inicial al objetivo.  
-1. Función **_extend (path)_**  
-Genera los caminos posibles a partir de un nodo, extendiendo el camino actual hacia sus vecinos.
+
+1. Función **_extend (path):_**  
+Genera los caminos posibles a partir de un nodo, extendiendo el camino actual hacia sus vecinos.  
 ```
 Funcion extend(path)
     Imprime el camino invertido
@@ -170,8 +171,8 @@ Funcion extend(path)
 Fin Funcion
 ```
 
-2. Función **_guardar-en-txt_**
-Permite guardar información en un archivo de texto, sobrescribiendo el archivo si ya existe.  
+2. Función **_guardar-en-txt:_**  
+Permite guardar información en un archivo de texto, sobrescribiendo el archivo si ya existe.    
 ```
 Funcion guardar-en-txt(nombre-archivo, contenido)
     Abrir el archivo con el nombre 'nombre-archivo' para escritura.
@@ -181,6 +182,26 @@ Funcion guardar-en-txt(nombre-archivo, contenido)
 Fin Funcion
 ```
 
+3. Función **_generar-archivo-grafo:_**  
+Su principal objetivo es generar una lista de adyacencia con la representación textual del grafo, con el fin de guardar la estructura del grafo en un formato legible y poder analizarlo o procesarlo después.  
+```
+Funcion generar-archivo-grafo()
+    Crear una variable vacía 'grafo' para almacenar la representación del grafo.
+    Para cada nodo en la lista de nodos predefinidos:
+        Obtener los vecinos de ese nodo y agregarlos a la variable 'grafo' en formato adecuado.
+    Guardar el contenido de 'grafo' en un archivo de texto con nombre "grafo_algoritmo.txt".
+Fin Funcion
+```
+
+4. Función **_guardar-caminos:_**  
+Esta función es útil para almacenar y llevar un registro de todos los caminos explorados en el grafo, permitiendo revisar los resultados después de la ejecución del algoritmo.  
+```
+Funcion guardar-caminos(camino)
+    Abrir el archivo "rutas_recorridas_dfs.txt" para agregar contenido al final del archivo.
+    Escribir el camino dado en el archivo, con un formato adecuado.
+    Cerrar el archivo.
+Fin Funcion
+```
 ---
 ## Descripción del funcionamiento de la interfaz 
 
