@@ -1,51 +1,91 @@
 .controls-container {
-    
-    display: flex;
-    justify-content: center;
-    /*margin-left: 100px;*/
-     /* Coloca los botones en columna */
-    /*justify-content: center;*/
-    /*justify-content: flex-start;*/
-    align-items: center;
-    flex-direction: row; /* Coloca los botones en columna */
-    gap: 10px; /* Espacio entre botones */
-    /*margin-bottom: 15px;*/
-    margin: 10px auto;
-  }
+
+  display: flex;
+
+  justify-content: space-between;
+  align-items: flex-start;
+  justify-content: center;
+  /*margin-left: 100px;*/
+  /* Coloca los botones en columna */
+  /*justify-content: center;*/
+  /*justify-content: flex-start;*/
+  /*align-items: center;*/
+  /*flex-direction: row; /* Coloca los botones en columna */
+  gap: 20px;
+  /* Espacio entre botones */
+
+  margin-bottom: 10px;
+
+}
+
+.start-end-inputs {
+  display: flexbox;
   
-  .modern-button {
-    /*display: inline-flex;*/
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    /*background: linear-gradient(135deg, #060606, #424242); /* Gradiente verde */
-    background-color: #d1d1d1;
-    color: rgb(0, 0, 0);
-    font-size: 14px;
-    font-weight: bold;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  
-  .modern-button .icon {
-    font-size: 18px; /* Tamaño del ícono */
-  }
-  
-  .modern-button:hover {
-    color: rgb(239, 239, 239);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
-    background: linear-gradient(135deg, #242424, #303130); /* Gradiente al pasar hover */
-  }
-  
-  .modern-button:disabled {
-    background: linear-gradient(135deg, #adaaaa, #e0e0e0); /* Color gris para deshabilitado */
-    color: #757575;
-    cursor: not-allowed;
-    box-shadow: none;
-  }
-  
+  flex-direction: column;
+  gap: 15px;
+}
+
+.start-end-inputs input {
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.left-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.right-controls {
+  display: flex;
+  gap: 10px;
+}
+
+
+
+.modern-button {
+
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  background-color: #d1d1d1;
+  color: rgb(0, 0, 0);
+  font-size: 14px;
+  font-weight: bold;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.modern-button .icon {
+  font-size: 18px;
+  /* Tamaño del ícono */
+}
+
+.modern-button:hover {
+  color: rgb(239, 239, 239);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(135deg, #242424, #303130);
+  /* Gradiente al pasar hover */
+}
+
+.modern-button:disabled {
+  background: linear-gradient(135deg, #adaaaa, #e0e0e0);
+  /* Color gris para deshabilitado */
+  color: #757575;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.result-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}

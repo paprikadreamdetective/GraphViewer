@@ -56,6 +56,7 @@ function GraphForm() {
         adjacency_list: adjacencyList,
         start_node: startNode,
         end_node: endNode,
+        algorithm: "defgraph",
       });
 
       setResult(response.data.output);

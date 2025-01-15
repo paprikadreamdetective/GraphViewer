@@ -29,7 +29,9 @@ def process_graph():
         # Crear archivo Lisp con la representación del grafo
         #lisp_code = generate_lisp_code(adjacency_list, start_node, end_node)
         lisp_code = str()
-        if algorithm == "Depth-First-Search":
+        if algorithm == "defgraph":
+            lisp_code = lisp_callback_def_graph(adjacency_list)
+        elif algorithm == "Depth-First-Search":
             lisp_code = generate_lisp_code_dfs(adjacency_list, start_node, end_node)
         elif algorithm == "Breadth-First-Search":
             lisp_code = generate_lisp_code_bfs(adjacency_list, start_node, end_node)
@@ -55,6 +57,44 @@ def process_graph():
     except Exception as e:
         print("error aqui")
         return jsonify({"error": str(e)}), 500
+
+def lisp_callback_def_graph(adjacency_list):
+    print(adjacency_list)
+    neighbors_code = "\n".join(
+        f"(setf (get '{node} 'neighbors) '({' '.join(neighbors)}))" for node, neighbors in adjacency_list.items()
+    )
+
+    
+    lisp_code=f"""
+    
+
+    {neighbors_code}
+
+
+
+
+    (defun guardar-en-txt (nombre-archivo contenido)
+  "Guarda el contenido en un archivo TXT, sobrescribiendo si ya existe."
+  (with-open-file (stream nombre-archivo
+                          :direction :output
+                          :if-exists :supersede
+                          :if-does-not-exist :create)
+    (format stream "~a" contenido)))
+
+(defun generar-archivo-grafo ()
+  "Genera un archivo con la representacion del grafo."
+  (let ((grafo ""))
+    (dolist (nodo '({' '.join(adjacency_list.keys())}))
+      (setf grafo (concatenate 'string grafo
+                               (format nil "~a: (~{{~A~^ ~}})~%" nodo (get nodo 'neighbors)))))
+    (guardar-en-txt "grafo_dfs.txt" grafo)))
+
+
+
+    (generar-archivo-grafo)
+
+    """
+    return lisp_code
 
 
 def generate_lisp_code_dfs(adjacency_list, start_node, end_node):
@@ -151,6 +191,7 @@ def generate_lisp_code_bfs(adjacency_list, start_node, end_node):
     neighbors_code = "\n".join(
         f"(setf (get '{node} 'neighbors) '({' '.join(neighbors)}))" for node, neighbors in adjacency_list.items()
     )
+    
 
     '''
     lisp_template = f"""

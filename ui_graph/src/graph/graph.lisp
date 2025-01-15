@@ -1,46 +1,51 @@
 
-    (defun initialize-graph (graph start)
-        "Inicializa los vertices del grafo para BFS."
-        (mapc (lambda (node)
-                (setf (get node 'color) 'WHITE
-                        (get node 'distance) 'infinity
-                        (get node 'predecessor) nil))
-                graph)
-        (setf (get start 'color) 'GRAY
-                (get start 'distance) 0
-                (get start 'predecessor) nil))
+(defun extend (path)
+    (print (reverse path))
+    (mapcar
+        #'(lambda (new-node) (cons new-node path))
+        (remove-if #'(lambda (neighbor) (member neighbor path)) (get (first path) 'neighbors))
+    ))
 
-    (defun bfs-with-all-movements (graph start output-file goal)
-        "Implementa BFS y escribe todos los movimientos realizados hasta encontrar el nodo objetivo."
-        (initialize-graph graph start)
-        (let ((queue (list (list start)))  ; La cola ahora contiene listas de caminos
-                (goal-reached nil))         ; Bandera para detener cuando se alcance el objetivo
-            (with-open-file (stream output-file
-                                    :direction :output
-                                    :if-exists :supersede
-                                    :if-does-not-exist :create)
-            (loop while (and queue (not goal-reached)) do
-                    (let ((path (pop queue)))
-                    (let ((u (car (last path))))  ; Ultimo nodo del camino actual
-                        ;; Escribe el camino actual en el archivo
-                        (format stream "path: ~a~%" path)
-                        ;; Si alcanzamos el nodo objetivo, registramos el camino y detenemos
-                        (when (eq u goal)
-                        ;(format stream "path: ~a~%" path)
-                        (setf goal-reached t))
-                        ;; Explora los vecinos del nodo actual si no se alcanzo el objetivo
-                        (unless goal-reached
-                        (dolist (v (get u 'neighbors))
-                            (when (eq (get v 'color) 'WHITE)
-                            ;; Marca el vecino como visitado y añade el nuevo camino a la cola
-                            (setf (get v 'color) 'GRAY
-                                    (get v 'distance) (+ 1 (get u 'distance))
-                                    (get v 'predecessor) u)
-                            (push (append path (list v)) queue)))
-                        ;; Marca el nodo como procesado
-                        (setf (get u 'color) 'BLACK))))))))
-    
-    (setf (get 'A 'neighbors) '(B C D E))
+(defun guardar-en-txt (nombre-archivo contenido)
+  "Guarda el contenido en un archivo TXT, sobrescribiendo si ya existe."
+  (with-open-file (stream nombre-archivo
+                          :direction :output
+                          :if-exists :supersede
+                          :if-does-not-exist :create)
+    (format stream "~a" contenido)))
+
+(defun generar-archivo-grafo ()
+  "Genera un archivo con la representacion del grafo."
+  (let ((grafo ""))
+    (dolist (nodo '(A B C D E F G H I J K L M N O P Q R S))
+      (setf grafo (concatenate 'string grafo
+                               (format nil "~a: (~{~A~^ ~})~%" nodo (get nodo 'neighbors)))))
+    (guardar-en-txt "grafo_dfs.txt" grafo)))
+
+(defun guardar-caminos (camino)
+  "Guarda los caminos recorridos en un archivo TXT."
+  (with-open-file (stream "rutas_recorridas_dfs.txt"
+                          :direction :output
+                          :if-exists :append
+                          :if-does-not-exist :create)
+    (format stream "path: (~{~A~^ ~})~%" camino)))
+
+(defun depth-first-search (start finish &optional (queue (list (list start))))
+  "Algoritmo DFS que genera los archivos correspondientes."
+  (generar-archivo-grafo)
+  (cond
+    ((endp queue) nil)
+    ((eq finish (first (first queue)))
+     (let ((path (reverse (first queue))))
+       (guardar-caminos path)
+       path))
+    (t
+     (let ((current-path (first queue)))
+       (guardar-caminos (reverse current-path))
+       (depth-first-search start finish
+                           (append (extend current-path) (rest queue)))))))
+
+(setf (get 'A 'neighbors) '(B C D E))
 (setf (get 'B 'neighbors) '(A C F G I))
 (setf (get 'C 'neighbors) '(A B D F))
 (setf (get 'D 'neighbors) '(A C E F G))
@@ -60,6 +65,10 @@
 (setf (get 'R 'neighbors) '(K O Q S))
 (setf (get 'S 'neighbors) '(P Q R))
 
-    (bfs-with-all-movements '(a b c d e f g h i j k l m n o p q r s) 'B "movements.txt" 'K)
+(with-open-file (stream "rutas_recorridas_dfs.txt"
+                        :direction :output
+                        :if-exists :supersede
+                        :if-does-not-exist :create)
+  (format stream ""))
 
-    
+(print (depth-first-search 'A 'S))

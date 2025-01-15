@@ -1,5 +1,5 @@
 A: (B C D E)
-B: (A C F G I)
+B: (A C F G)
 C: (A B D F)
 D: (A C E F G)
 E: (A D G H)

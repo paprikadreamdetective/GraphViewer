@@ -155,12 +155,43 @@ const GraphArea = ({ title, graph, visitedPaths, delayAnimation}) => {
     e.preventDefault();
     try {
       const adjacencyList = {};
-      graphData.edges.forEach(({ source, target }) => {
+      /*graphData.edges.forEach(({ source, target }) => {
         if (!adjacencyList[source]) adjacencyList[source] = [];
         adjacencyList[source].push(target);
         if (!adjacencyList[target]) adjacencyList[target] = [];
         adjacencyList[target].push(source);  // Solo si es grafo no dirigido
-      });
+        
+      });*/
+
+      const uniqueEdges = graphData.edges.filter(
+        (edge, index, self) =>
+          index === self.findIndex(
+            (e) => (e.source === edge.source && e.target === edge.target) || 
+                   (e.source === edge.target && e.target === edge.source) // Verifica en ambos sentidos
+          )
+      );
+      
+      console.log("Datos únicos del grafo (edges):");
+      console.log(uniqueEdges);
+
+      graphData.edges.forEach(({ source, target }) => {
+        // Crear listas vacías si no existen para los nodos
+        if (!adjacencyList[source]) adjacencyList[source] = [];
+        if (!adjacencyList[target]) adjacencyList[target] = [];
+  
+        // Agregar conexiones solo si no están ya presentes
+        if (!adjacencyList[source].includes(target)) {
+          adjacencyList[source].push(target);
+        }
+        if (!adjacencyList[target].includes(source)) {
+          adjacencyList[target].push(source); // Solo para grafos no dirigidos
+        }
+      })
+
+      
+      console.log("parseador nativo");
+      console.log(graph);
+
       console.log("Lista antes de enviar: ");
       console.log(adjacencyList);
       const response = await axios.post("http://localhost:5000/process-graph", {
@@ -233,38 +264,55 @@ const GraphArea = ({ title, graph, visitedPaths, delayAnimation}) => {
     <div className="graph-area">
       <h3>{title}</h3>
 
-      {/*<div className="controls-container">
-        <button onClick={startAnimation} disabled={!isAnimationReady || isAnimating} className="modern-button">
-          <span className="icon">🎬</span> Start Animation
-        </button>
-        <button onClick={resetAnimation} className="modern-button">
-          <span className="icon">🔄</span> Reset
-        </button>
-    
-      </div>*/}
       <div className="controls-container">
-      <form onSubmit={handleSubmit}>
-          <StartEndInput
-            startNode={startNode}
-            setStartNode={setStartNode}
-            endNode={endNode}
-            setEndNode={setEndNode}
-          />
-          <h2>Result:</h2>
-          <pre>{result}</pre>
-          <button className="modern-button" type="submit">Submit</button>
+        <div className="left-controls">
+          <form onSubmit={handleSubmit}>
+          <div className="start-end-inputs">
+       
           
-        </form>
-        <button 
-          onClick={startAnimation} 
-          disabled={!isAnimationReady || isAnimating} 
-          className="modern-button">
-          <span className="icon">🎬</span> Start Animation
-        </button>
-        <button onClick={resetAnimation} className="modern-button">
-          <span className="icon">🔄</span> Reset
-        </button>
+            <label>Start Node:  </label>
+            <input
+              type="text"
+              value={startNode}
+              onChange={(e) => setStartNode(e.target.value)}
+              placeholder="Start node"
+              required
+            />
+          
+          
+            <label>End Node:  </label>
+            <input
+              type="text"
+              value={endNode}
+              onChange={(e) => setEndNode(e.target.value)}
+              placeholder="End node"
+              required
+            />
+            
+          <div className='result-section'>
+          <h3>Result: {result}</h3>
+            <button className="modern-button" type="submit">Update Traversed Path</button>
+          </div>
         </div>
+        
+        </form>
+    </div>
+        
+        <div className="right-controls">
+          <button 
+            onClick={startAnimation} 
+            disabled={!isAnimationReady || isAnimating} 
+            className="modern-button">
+            <span className="icon">🎬</span> Start Animation
+          </button>
+          <button onClick={resetAnimation} className="modern-button">
+            <span className="icon">🔄</span> Reset
+          </button>
+            
+            
+          </div>
+          
+          </div>
 
   {showPath && (
         <div className="path-message">
