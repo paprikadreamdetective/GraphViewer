@@ -85,126 +85,96 @@ I. Función de
 
 
 ---
-# Manual de Instalación y Ejecución del Proyecto
+# 📚 Proyecto de Búsqueda en Grafos
 
-Este documento proporciona los pasos necesarios para instalar y ejecutar el proyecto de visualización de algoritmos de búsqueda en grafos utilizando **React**, **Flask** y **Common Lisp** en un sistema operativo **Windows**.
-
----
-
-## Requisitos Previos
-
-Antes de comenzar, asegúrate de que tu sistema tenga lo siguiente:
-
-### 1. Node.js y npm
-- Descarga e instala Node.js desde [Node.js](https://nodejs.org/).
-- Verifica la instalación:
-  ```bash
-  node -v
-  npm -v
-  ```
-
-### 2. Python
-- Descarga e instala Python 3.9 o superior desde [Python.org](https://www.python.org/downloads/).
-- Durante la instalación, asegúrate de seleccionar la opción **"Add Python to PATH"**.
-- Verifica la instalación:
-  ```bash
-  python --version
-  pip --version
-  ```
-
-### 3. Common Lisp (SBCL)
-- Descarga e instala Steel Bank Common Lisp (SBCL) desde [SBCL](http://www.sbcl.org/platform-table.html).
-- Añade la ruta de SBCL a las variables de entorno del sistema para poder ejecutar el comando `sbcl` desde cualquier ubicación.
-- Verifica la instalación:
-  ```bash
-  sbcl --version
-  ```
-
-### 4. Git (opcional, para clonar el repositorio)
-- Descarga e instala Git desde [Git for Windows](https://git-scm.com/download/win).
+¡Bienvenido! Este proyecto permite explorar algoritmos de búsqueda en grafos usando una interfaz gráfica basada en React y un backend con Flask que ejecuta código en Common Lisp.
 
 ---
 
-## Instalación del Proyecto
+## 🛠️ Requisitos
 
-### 1. Clonar el Repositorio (opcional)
-Si tienes acceso al repositorio remoto, puedes clonarlo:
-```bash
-git clone https://github.com/tu-usuario/tu-repositorio.git
-cd tu-repositorio
-```
+Antes de empezar, asegúrate de tener los siguientes componentes instalados:
 
-Si no, coloca los archivos del proyecto en una carpeta de tu elección.
+### 🖥️ Frontend
+- [Node.js](https://nodejs.org/) (recomendado LTS)
 
-### 2. Instalación del Frontend (React)
+### 🐍 Backend
+- Python 3.x
+- Flask
+- Flask-CORS
 
-#### Paso 1: Navegar al directorio del frontend
-```bash
-cd frontend
-```
-
-#### Paso 2: Instalar dependencias
-```bash
-npm install
-```
-
-#### Paso 3: Ejecutar la aplicación React
-```bash
-npm start
-```
-Esto abrirá una ventana del navegador con la interfaz de usuario del proyecto.
-
-### 3. Instalación del Backend (Flask)
-
-#### Paso 1: Crear un entorno virtual (opcional, recomendado)
-```bash
-python -m venv venv
-```
-Activa el entorno virtual:
-```bash
-venv\Scripts\activate
-```
-
-#### Paso 2: Instalar dependencias de Python
-```bash
-pip install -r requirements.txt
-```
-El archivo `requirements.txt` debe contener las siguientes dependencias:
-```
-Flask
-Flask-Cors
-```
-
-#### Paso 3: Ejecutar la aplicación Flask
-En el directorio del backend:
-```bash
-python app.py
-```
-Esto iniciará el servidor en `http://127.0.0.1:5000/`.
+### 🏛️ Lenguaje de Soporte
+- [Steel Bank Common Lisp (SBCL)](http://www.sbcl.org/)
 
 ---
 
-## Configuración y Ejecución del Proyecto
+## ⚙️ Instalación
 
-1. Asegúrate de que el frontend y el backend estén ejecutándose correctamente.
-2. Interactúa con la aplicación desde el navegador para enviar grafos y ejecutar los algoritmos.
+Sigue los pasos para configurar tu entorno.
+
+### 1️⃣ Clona el Repositorio
+```bash
+git clone https://github.com/tu-repositorio/proyecto-grafos.git
+cd proyecto-grafos
+```
+
+### 2️⃣ Configuración del Frontend
+1. Navega a la carpeta del frontend:
+   ```bash
+   cd frontend
+   ```
+2. Instala las dependencias:
+   ```bash
+   npm install
+   ```
+3. Inicia el servidor de desarrollo:
+   ```bash
+   npm start
+   ```
+   Esto abrirá la aplicación en tu navegador en `http://localhost:3000`.
+
+### 3️⃣ Configuración del Backend
+1. Asegúrate de estar en la carpeta raíz del proyecto.
+2. Instala las dependencias de Python:
+   ```bash
+   pip install Flask Flask-CORS
+   ```
+3. Ejecuta el servidor:
+   ```bash
+   python app.py
+   ```
+   El servidor Flask estará disponible en `http://localhost:5000`.
+
+### 4️⃣ Instalación de SBCL para Ejecutar Common Lisp
+1. Descarga el instalador para Windows desde [SBCL Releases](http://www.sbcl.org/platform-table.html).
+2. Sigue las instrucciones del instalador.
+3. Agrega `sbcl` a las variables de entorno de tu sistema para ejecutarlo desde la línea de comandos.
 
 ---
 
-## Problemas Comunes
+## 🚀 Cómo Ejecutar el Proyecto
 
-### Error: "sbcl no reconocido como comando"
-Solución: Asegúrate de que SBCL está agregado al PATH del sistema.
-
-### Error de dependencias de Python
-Solución: Ejecuta `pip install -r requirements.txt` nuevamente o instala manualmente cada paquete.
-
-### Puertos en uso
-Solución: Detén cualquier proceso que esté usando los puertos 3000 (React) o 5000 (Flask).
+1. Asegúrate de tener tanto el frontend como el backend corriendo.
+2. Interactúa con la interfaz gráfica para enviar grafos y seleccionar algoritmos.
+3. Los resultados y archivos generados estarán disponibles en la carpeta raíz del backend.
 
 ---
 
-Con estos pasos, deberías tener tu proyecto completamente configurado y ejecutándose en tu máquina Windows.
+## 💡 Notas
+- Asegúrate de tener permisos para escribir archivos en el directorio del proyecto.
+- Los algoritmos disponibles incluyen: `DFS`, `BFS` y `Best-First Search`.
+
+---
+
+## 🛑 Resolución de Problemas
+- **Error al ejecutar SBCL:** Verifica que `sbcl` esté en las variables de entorno.
+- **Dependencias faltantes:** Asegúrate de ejecutar `pip install` o `npm install` según corresponda.
+
+---
+
+¡Disfruta explorando algoritmos de búsqueda! 🎉
+
+
 
 
 
