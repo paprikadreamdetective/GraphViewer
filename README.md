@@ -44,25 +44,24 @@ Partiendo de un nodo inicial o raíz, se exploran todos sus nodos vecinos adyace
 Implementación en pseudocódigo:  
 ```
 BFS(Grafo, Nodo, Objetivo)
-1. Crear un diccionario `Visitados` para registrar los nodos visitados y de dónde se visitaron.
-2. Crear una cola `Cola` (estructura FIFO).
-3. Inicializar `Visitados[Nodo]` con `NULO` (El odo raíz no tiene predecesor).
-4. Agregar `Nodo` a `Cola`.
-5. Mientras `Cola` no esté vacía:
-6.     m = DESENCOLAR(Cola)  # Obtener el siguiente nodo
-7.     Si m == Objetivo:  # Si encontramos el objetivo
-8.         Crear una lista `Camino` vacía.
-9.         Mientras m no sea `NULO`:
-10.             Agregar m a `Camino`.
-11.             m = Visitados[m]  # Retroceder al nodo predecesor.
-12.         Devolver `Camino` invertido.
-13.     Para cada Vecino en Grafo[m]:
-14.         Si Vecino no está en `Visitados`:
-15.             Visitados[Vecino] = m  # Registrar el predecesor.
-16.             ENCOLAR(Cola, Vecino).
-17. Fin Mientras
-18. Devolver `NULO` si no se encuentra un camino.
-
+''' Crear un diccionario `Visitados` para registrar los nodos visitados y de dónde se visitaron.
+    Crear una cola `Cola` (estructura FIFO).
+    Inicializar `Visitados[Nodo]` con `NULO` (El odo raíz no tiene predecesor).
+    Agregar `Nodo` a `Cola`. '''
+    Mientras `Cola` no esté vacía:
+       m = DESENCOLAR(Cola)  # Obtener el siguiente nodo
+        Si m == Objetivo:  # Si encontramos el objetivo
+            Crear una lista `Camino` vacía.
+            Mientras m no sea `NULO`:
+                Agregar m a `Camino`.
+                m = Visitados[m]  # Retroceder al nodo predecesor.
+            Devolver `Camino` invertido.
+        Para cada Vecino en Grafo[m]:
+            Si Vecino no está en `Visitados`:
+                Visitados[Vecino] = m  # Registrar el predecesor.
+                ENCOLAR(Cola, Vecino).
+    Fin Mientras
+    Devolver `NULO` si no se encuentra un camino.
 ```
 
 3. **Depth First Search (DFS).**  
