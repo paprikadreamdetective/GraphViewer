@@ -82,4 +82,120 @@ I. Función de
 
 
 ---
-# Manual de usuario
+Manual de Instalación y Ejecución del Proyecto
+
+Este documento proporciona los pasos necesarios para instalar y ejecutar el proyecto de visualización de algoritmos de búsqueda en grafos utilizando React, Flask y Common Lisp en un sistema operativo Windows.
+
+Requisitos Previos
+
+Antes de comenzar, asegúrate de que tu sistema tenga lo siguiente:
+
+1. Node.js y npm
+
+Descarga e instala Node.js desde Node.js.
+
+Verifica la instalación:
+
+node -v
+npm -v
+
+2. Python
+
+Descarga e instala Python 3.9 o superior desde Python.org.
+
+Durante la instalación, asegúrate de seleccionar la opción "Add Python to PATH".
+
+Verifica la instalación:
+
+python --version
+pip --version
+
+3. Common Lisp (SBCL)
+
+Descarga e instala Steel Bank Common Lisp (SBCL) desde SBCL.
+
+Añade la ruta de SBCL a las variables de entorno del sistema para poder ejecutar el comando sbcl desde cualquier ubicación.
+
+Verifica la instalación:
+
+sbcl --version
+
+4. Git (opcional, para clonar el repositorio)
+
+Descarga e instala Git desde Git for Windows.
+
+Instalación del Proyecto
+
+1. Clonar el Repositorio (opcional)
+
+Si tienes acceso al repositorio remoto, puedes clonarlo:
+
+git clone https://github.com/tu-usuario/tu-repositorio.git
+cd tu-repositorio
+
+Si no, coloca los archivos del proyecto en una carpeta de tu elección.
+
+2. Instalación del Frontend (React)
+
+Paso 1: Navegar al directorio del frontend
+
+cd frontend
+
+Paso 2: Instalar dependencias
+
+npm install
+
+Paso 3: Ejecutar la aplicación React
+
+npm start
+
+Esto abrirá una ventana del navegador con la interfaz de usuario del proyecto.
+
+3. Instalación del Backend (Flask)
+
+Paso 1: Crear un entorno virtual (opcional, recomendado)
+
+python -m venv venv
+
+Activa el entorno virtual:
+
+venv\Scripts\activate
+
+Paso 2: Instalar dependencias de Python
+
+pip install -r requirements.txt
+
+El archivo requirements.txt debe contener las siguientes dependencias:
+
+Flask
+Flask-Cors
+
+Paso 3: Ejecutar la aplicación Flask
+
+En el directorio del backend:
+
+python app.py
+
+Esto iniciará el servidor en http://127.0.0.1:5000/.
+
+Configuración y Ejecución del Proyecto
+
+Asegúrate de que el frontend y el backend estén ejecutándose correctamente.
+
+Interactúa con la aplicación desde el navegador para enviar grafos y ejecutar los algoritmos.
+
+Problemas Comunes
+
+Error: "sbcl no reconocido como comando"
+
+Solución: Asegúrate de que SBCL está agregado al PATH del sistema.
+
+Error de dependencias de Python
+
+Solución: Ejecuta pip install -r requirements.txt nuevamente o instala manualmente cada paquete.
+
+Puertos en uso
+
+Solución: Detén cualquier proceso que esté usando los puertos 3000 (React) o 5000 (Flask).
+
+
