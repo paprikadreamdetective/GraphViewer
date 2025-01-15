@@ -60,11 +60,11 @@ Mientras `Cola` no esté vacía:
            Si Vecino no está en `Visitados`:
                Visitados[Vecino] = m  # Registrar el predecesor.
                ENCOLAR(Cola, Vecino).
-   Fin Mientras
+Fin Mientras
    Devolver `NULO` si no se encuentra un camino.
 ```
 
-3. **Depth First Search (DFS).**  
+2. **Depth First Search (DFS).**  
 Estratégia de búsqueda en profundidad en un gráfo
 Implementación en pseudocódigo:  
 ```
@@ -95,24 +95,24 @@ Inicialmente, todos los nodos, a excepción del nodo raíz, se marcan como blanc
 El algoritmo es de carácter iterativo y continúa su ejecución mientras existan vértices grises (en la frontera de exploración). En cada iteración, se extrae un vértice gris de la cola y se procesan sus vecinos. Una vez que todos los vecinos de un nodo han sido explorado, este se marca como negro (completamente explorado). El algoritmo garantiza que cada vértice alcanzable se descubra una sola vez y que las distancias calculadas sean las mínimas posibles. El árbol de búsqueda en amplitud generado puede variar dependiendo del orden en que se visiten los vecinos. 
 ```
 BFS(G, s)
-1. Para cada vértice u ∈ G.V - {s}:
-2.     u.color = BLANCO
-3.     u.d = ∞
-4.     u.π = NIL
-5. s.color = GRIS
-6. s.d = 0
-7. s.π = NIL
-8. Q = ∅
-9. ENCOLAR(Q, s)
-10. Mientras Q ≠ ∅:
-11.     u = DESENCOLAR(Q)
-12.     Para cada vértice v en G.Adj[u]:
-13.         Si v.color == BLANCO:
-14.             v.color = GRIS
-15.             v.d = u.d + 1
-16.             v.π = u
-17.             ENCOLAR(Q, v)
-18.     u.color = NEGRO
+    Para cada vértice u ∈ G.V - {s}:
+        u.color = BLANCO
+        u.d = ∞
+        u.π = NIL
+    s.color = GRIS
+    s.d = 0
+    s.π = NIL
+    Q = ∅
+    ENCOLAR(Q, s)
+    Mientras Q ≠ ∅:
+        u = DESENCOLAR(Q)
+        Para cada vértice v en G.Adj[u]:
+            Si v.color == BLANCO:
+                v.color = GRIS
+                v.d = u.d + 1
+                v.π = u
+                ENCOLAR(Q, v)
+        u.color = NEGRO
 ```
 
 
