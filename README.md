@@ -76,7 +76,25 @@ Sigue un enfoque sistemático mediante el uso de un método de coloreado de los 
 Inicialmente, todos los nodos, a excepción del nodo raíz, se marcan como blancos, se les asigna una distancia inicial de 1 y sus predecesores se establecen en NIL. El nodo raíz se marca como gris, su distancia se establece en 0 y su predecesor en NIL. Posteriormente, se crea una cola Q, que inicialmente contiene solo el nodo raíz. Deben registrarse las distancias desde el nodo inicial y el nodo predecesor para cada nodo.  
 El algoritmo es de carácter iterativo y continúa su ejecución mientras existan vértices grises (en la frontera de exploración). En cada iteración, se extrae un vértice gris de la cola y se procesan sus vecinos. Una vez que todos los vecinos de un nodo han sido explorado, este se marca como negro (completamente explorado). El algoritmo garantiza que cada vértice alcanzable se descubra una sola vez y que las distancias calculadas sean las mínimas posibles. El árbol de búsqueda en amplitud generado puede variar dependiendo del orden en que se visiten los vecinos. 
 ```
-
+BFS(G, s)
+1. Para cada vértice u ∈ G.V - {s}:
+2.     u.color = BLANCO
+3.     u.d = ∞
+4.     u.π = NIL
+5. s.color = GRIS
+6. s.d = 0
+7. s.π = NIL
+8. Q = ∅
+9. ENCOLAR(Q, s)
+10. Mientras Q ≠ ∅:
+11.     u = DESENCOLAR(Q)
+12.     Para cada vértice v en G.Adj[u]:
+13.         Si v.color == BLANCO:
+14.             v.color = GRIS
+15.             v.d = u.d + 1
+16.             v.π = u
+17.             ENCOLAR(Q, v)
+18.     u.color = NEGRO
 ```
 
 
