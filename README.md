@@ -41,8 +41,8 @@ Los grafos fueron representados mediante listas de adyacencia, empleando una est
 1. **Breadth First Search (BFS).**  
 La exploración de grafos en amplitud es uno de los algoritmos más simples para búsqueda de caminos en grafos y el arquetipo de muchos algoritmos de grafos importantes modernos.  
 Partiendo de un nodo inicial o raíz, se exploran todos sus nodos vecinos adyacentes (nivel 1) antes de profundizar al siguiente nivel. Una vez que todos los vecinos cercanos se han visitado, se avanza de nivel (nivel 2 - vecinos de vecinos), y se continúa sucesivamente, lo que garantiza que los nodos más cercanos al inicial se visiten primero. Este algoritmo emplea una cola como estructura de datos, manteniendo el orden de los nodos por visitar.  
-Implementación en pseudocódigo:  
 ```
+## Implementación en pseudocódigo:
 BFS(Grafo, Nodo, Objetivo)
 ''' Crear un diccionario 'Visitados' para registrar los nodos visitados y de dónde se visitaron.
     Crear una cola 'Cola' (estructura FIFO).
@@ -66,17 +66,15 @@ Fin Mientras
 
 2. **Depth First Search (DFS).**  
 Estratégia de búsqueda en profundidad en un grafo, donde se recorren todos los vértices adyacentes de uno a uno. DFS explora tan lejos como sea posible a lo largo de un mismo camino antes de retroceder para explorar los subyacentes, siguiendo el principio de "profundidad antes que amplitud".  
-Su funcionamiento se basa en partir de un nodo inicial o raíz, que es marcado como "visitado" para no procesarlo nuevamente. Si el nodo vecino no ha sido visitado, se realiza una llamada recursiva para ese nodo, cuando ya ha sido visitado, el nodo se omite. Cuando no quedan m[as vecinos por explorar, el algoritmo retrocede al nodo anterior, y al encontrar el objetivo se retorna el camino. Emplea una pila como estructura de datos.  
-Implementación en pseudocódigo:  
+Su funcionamiento se basa en partir de un nodo inicial o raíz, que es marcado como "visitado" para no procesarlo nuevamente. Si el nodo vecino no ha sido visitado, se realiza una llamada recursiva para ese nodo, cuando ya ha sido visitado, el nodo se omite. Cuando no quedan más vecinos por explorar, el algoritmo retrocede al nodo anterior, y al encontrar el objetivo se retorna el camino. Emplea una pila como estructura de datos.  
 ```
-
+## Implementación en pseudocódigo:
 ```
 
 3. **Best First Search.**  
 Método heurístico  
-Implementación en pseudocódigo:  
 ```
-
+## Implementación en pseudocódigo:
 ```
 
 4. **Random Breadth First Search (r-BFS).**  
@@ -117,6 +115,7 @@ Sigue un enfoque sistemático mediante el uso de un método de coloreado de los 
 Inicialmente, todos los nodos, a excepción del nodo raíz, se marcan como blancos, se les asigna una distancia inicial de 1 y sus predecesores se establecen en NIL. El nodo raíz se marca como gris, su distancia se establece en 0 y su predecesor en NIL. Posteriormente, se crea una cola Q, que inicialmente contiene solo el nodo raíz. Deben registrarse las distancias desde el nodo inicial y el nodo predecesor para cada nodo.  
 El algoritmo es de carácter iterativo y continúa su ejecución mientras existan vértices grises (en la frontera de exploración). En cada iteración, se extrae un vértice gris de la cola y se procesan sus vecinos. Una vez que todos los vecinos de un nodo han sido explorado, este se marca como negro (completamente explorado). El algoritmo garantiza que cada vértice alcanzable se descubra una sola vez y que las distancias calculadas sean las mínimas posibles. El árbol de búsqueda en amplitud generado puede variar dependiendo del orden en que se visiten los vecinos. 
 ```
+## Implementación en pseudocódigo:
 BFS(G, s)
     Para cada vértice u ∈ G.V - {s}:
         u.color = BLANCO
