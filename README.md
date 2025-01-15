@@ -48,20 +48,20 @@ BFS(Grafo, Nodo, Objetivo)
     Crear una cola `Cola` (estructura FIFO).
     Inicializar `Visitados[Nodo]` con `NULO` (El odo raíz no tiene predecesor).
     Agregar `Nodo` a `Cola`. '''
-    Mientras `Cola` no esté vacía:
-       m = DESENCOLAR(Cola)  # Obtener el siguiente nodo
-        Si m == Objetivo:  # Si encontramos el objetivo
-            Crear una lista `Camino` vacía.
-            Mientras m no sea `NULO`:
-                Agregar m a `Camino`.
-                m = Visitados[m]  # Retroceder al nodo predecesor.
-            Devolver `Camino` invertido.
-        Para cada Vecino en Grafo[m]:
-            Si Vecino no está en `Visitados`:
-                Visitados[Vecino] = m  # Registrar el predecesor.
-                ENCOLAR(Cola, Vecino).
-    Fin Mientras
-    Devolver `NULO` si no se encuentra un camino.
+Mientras `Cola` no esté vacía:
+      m = DESENCOLAR(Cola)  # Obtener el siguiente nodo
+       Si m == Objetivo:  # Si encontramos el objetivo
+           Crear una lista `Camino` vacía.
+           Mientras m no sea `NULO`:
+               Agregar m a `Camino`.
+               m = Visitados[m]  # Retroceder al nodo predecesor.
+           Devolver `Camino` invertido.
+       Para cada Vecino en Grafo[m]:
+           Si Vecino no está en `Visitados`:
+               Visitados[Vecino] = m  # Registrar el predecesor.
+               ENCOLAR(Cola, Vecino).
+   Fin Mientras
+   Devolver `NULO` si no se encuentra un camino.
 ```
 
 3. **Depth First Search (DFS).**  
