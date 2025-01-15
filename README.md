@@ -39,9 +39,14 @@ Los grafos fueron representados mediante listas de adyacencia, empleando una est
       ```(setf (get 'node 'neighbors) '(b c d)) ```
       
 1. **Breadth First Search (BFS).**  
-La exploración de grafos en amplitud es uno de los algoritmos más simples para búsqueda de caminos en grafos y el arquetipo de muchos algoritmos de grafos importantes modernos. 
+La exploración de grafos en amplitud es uno de los algoritmos más simples para búsqueda de caminos en grafos y el arquetipo de muchos algoritmos de grafos importantes modernos.  
+Partiendo de un nodo inicial o raíz, se exploran todos los nodos vecinos adyacentes (nivel 1) antes de profundizar al siguiente nivel. Una vez que todos los nodos adyacentes se han visitado, se avanza de nivel (nivel 2 - vecinos de vecinos), y se continúa sucesivamente, lo que garantiza que los nodos más cercanos al inicial se visiten primero. Este algoritmo emplea una cola como estructura de datos, manteniendo el orden de los nodos por visitar.  
+Implementación en pseudocódigo:  
+```
 
-2. **Depth First Search (DFS).**  
+```
+
+3. **Depth First Search (DFS).**  
 Estratégia de búsqueda en profundidad en un gráfo
 Implementación en pseudocódigo:  
 ```
