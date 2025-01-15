@@ -109,9 +109,10 @@ Fin Mientras
 5. **BFS de Cormen.**  
 Consiste en implementar el algoritmo **Breadth First Search** propuesto en el libro [_Introduction to Algorithms_](https://dl.ebooksworld.ir/books/Introduction.to.Algorithms.4th.Leiserson.Stein.Rivest.Cormen.MIT.Press.9780262046305.EBooksWorld.ir.pdf) de Thomas H. Cormen.  
 Sigue un enfoque sistemático mediante el uso de un método de coloreado de los nodos:  
-- Blancos = no visitados,  
-- Grises = en la cola,  
-- Negros = completamente visitados.  
+   - Blancos = no visitados,  
+   - Grises = en la cola,  
+   - Negros = completamente visitados.
+       
 Inicialmente, todos los nodos, a excepción del nodo raíz, se marcan como blancos, se les asigna una distancia inicial de 1 y sus predecesores se establecen en NIL. El nodo raíz se marca como gris, su distancia se establece en 0 y su predecesor en NIL. Posteriormente, se crea una cola Q, que inicialmente contiene solo el nodo raíz. Deben registrarse las distancias desde el nodo inicial y el nodo predecesor para cada nodo.  
 El algoritmo es de carácter iterativo y continúa su ejecución mientras existan vértices grises (en la frontera de exploración). En cada iteración, se extrae un vértice gris de la cola y se procesan sus vecinos. Una vez que todos los vecinos de un nodo han sido explorado, este se marca como negro (completamente explorado). El algoritmo garantiza que cada vértice alcanzable se descubra una sola vez y que las distancias calculadas sean las mínimas posibles. El árbol de búsqueda en amplitud generado puede variar dependiendo del orden en que se visiten los vecinos. 
 ```
