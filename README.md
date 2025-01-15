@@ -112,8 +112,36 @@ Función BestFirstSearch(inicio, objetivo)
     Si la cola se vacía, no se encuentra solución.
     Devolver NULO.
 ```
-Para desarrollar adecuadamente el método, se hizo uso de funciones auxiliares en **Common Lisp** que permitieron la modificación del método clásico. Estas se describen a continuación:  
-I. 
+   Para desarrollar adecuadamente el método, se hizo uso de funciones auxiliares en **Common Lisp** que permitieron la modificación del método clásico. Estas se       describen a continuación:  
+   1. **distancia-recta():**  
+   Calcula la distancia euclidiana entre dos nodos, node1 y node2, usando sus coordenadas.  
+```
+      (defun distancia-recta (node1 node2)
+  (let* ((coord1 (get node1 'coordinates))
+         (coord2 (get node2 'coordinates))
+         (dx (- (first coord1) (first coord2)))
+         (dy (- (second coord1) (second coord2))))]
+    (sqrt (+ (* dx dx) (* dy dy)))))
+```   
+   2. **pairwise (lst):**  
+   Genera pares consecutivos de elementos en una lista para poder calcular la distancia entre nodos consecutivos en un camino.  
+``` 
+(defun pairwise (lst)
+  "Genera pares consecutivos de elementos en la lista para calcular distancias."
+  (mapcar #'list lst (rest lst)))   
+``` 
+  3. **guardar-caminos-y-costos (camino, costo):**  
+Guarda los caminos recorridos y el costo acumulado en un archivo de texto.
+``` 
+(defun guardar-caminos-y-costos (camino costo)
+  "Guarda los caminos recorridos y el costo acumulado en un archivo TXT.
+  Sobrescribe el archivo en cada ejecución."
+  (with-open-file (stream "caminos.txt"
+                          :direction :output
+                          :if-exists :append
+                          :if-does-not-exist :create)
+    (format stream "path: ~a cost: ~a~%" camino costo)))
+```
 
 4. **Random Breadth First Search (r-BFS).**  
 Variante de BFS que sigue el mismo principio de búsqueda sistemática en amplitud, pero introduce una componente aleatoria al proceso de selección de los vecinos a explorar. En lugar de seguir un orden fijo, mezcla aleatorialmente el orden de aparición de los vecinos antes de añadirlos a la cola.
@@ -141,7 +169,23 @@ r-BFS(Grafo, Nodo, Objetivo)
 Fin Mientras
    Devolver 'NULO' si no se encuentra un camino.
 ```
-Como se observa, esta modificación requiere realizar una mezcla de los vecinos en la lista de caminos para aleatorizar la selección del siguiente nodo a visitar, lo que puede reducir el tamaño de la exploración en contraste con el método sistemático. Para este fin, se implementó una función auxiliar en **Common Lisp**  
+Como se observa, esta modificación requiere realizar una mezcla de los vecinos en la lista de caminos para aleatorizar la selección del siguiente nodo a visitar, lo que puede reducir el tamaño de la exploración en contraste con el método sistemático. Para este fin, se implementó una función auxiliar en **Common Lisp** denominada shuffle, que se presenta a continuación:  
+1. **Creación de un estado aleatorio:**  
+La creación y definición de un estado aleatorio inicializa el algoritmo de manera no determinista, *random-state*: Es una variable global que almacena este estado aleatorio. Se utiliza para controlar la generación de números aleatorios.  
+``` (setf *random-state* (make-random-state t)) ```  
+
+2. **Función shuffle:**
+La función shuffle baraja los elementos de una lista en un orden aleatorio utilizando el algoritmo de Fisher-Yates.  
+Convierte la lista en un vector para facilitar el acceso por índices -> Itera sobre el vector desde el último elemento hacia el primero -> Intercambia cada elemento con otro seleccionado al azar dentro del rango actual -> Devuelve el vector barajado como una lista.  
+```
+(defun shuffle (list)
+  "Baraja una lista utilizando un algoritmo simple de Fisher-Yates."
+  (let ((vec (coerce list 'vector)))
+    (loop for i from (1- (length vec)) downto 1
+          do (rotatef (aref vec i)
+                      (aref vec (random (1+ i) *random-state*))))
+    (coerce vec 'list)))
+```
 
 5. **BFS de Cormen.**  
 Consiste en implementar el algoritmo **Breadth First Search** propuesto en el libro [_Introduction to Algorithms_](https://dl.ebooksworld.ir/books/Introduction.to.Algorithms.4th.Leiserson.Stein.Rivest.Cormen.MIT.Press.9780262046305.EBooksWorld.ir.pdf) de Thomas H. Cormen.  
