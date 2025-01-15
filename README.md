@@ -114,7 +114,7 @@ Sigue los pasos para configurar tu entorno.
 
 ### 1️⃣ Clona el Repositorio
 ```bash
-git clone [https://github.com/tu-repositorio/proyecto-grafos.git](https://github.com/paprikadreamdetective/GraphViewer.git)
+git clone https://github.com/paprikadreamdetective/GraphViewer.git
 ```
 
 ### 2️⃣ Configuración del Frontend
