@@ -44,24 +44,24 @@ Partiendo de un nodo inicial o raíz, se exploran todos sus nodos vecinos adyace
 Implementación en pseudocódigo:  
 ```
 BFS(Grafo, Nodo, Objetivo)
-''' Crear un diccionario `Visitados` para registrar los nodos visitados y de dónde se visitaron.
-    Crear una cola `Cola` (estructura FIFO).
-    Inicializar `Visitados[Nodo]` con `NULO` (El odo raíz no tiene predecesor).
-    Agregar `Nodo` a `Cola`. '''
-Mientras `Cola` no esté vacía:
+''' Crear un diccionario 'Visitados' para registrar los nodos visitados y de dónde se visitaron.
+    Crear una cola 'Cola' (estructura FIFO).
+    Inicializar 'Visitados[Nodo]' con 'NULO' (El odo raíz no tiene predecesor).
+    Agregar 'Nodo' a 'Cola'. '''
+Mientras 'Cola' no esté vacía:
       m = DESENCOLAR(Cola)  # Obtener el siguiente nodo
        Si m == Objetivo:  # Si encontramos el objetivo
-           Crear una lista `Camino` vacía.
-           Mientras m no sea `NULO`:
-               Agregar m a `Camino`.
+           Crear una lista 'Camino' vacía.
+           Mientras m no sea 'NULO':
+               Agregar m a 'Camino'.
                m = Visitados[m]  # Retroceder al nodo predecesor.
-           Devolver `Camino` invertido.
+           Devolver 'Camino' invertido.
        Para cada Vecino en Grafo[m]:
-           Si Vecino no está en `Visitados`:
+           Si Vecino no está en 'Visitados':
                Visitados[Vecino] = m  # Registrar el predecesor.
                ENCOLAR(Cola, Vecino).
 Fin Mientras
-   Devolver `NULO` si no se encuentra un camino.
+   Devolver 'NULO' si no se encuentra un camino.
 ```
 
 2. **Depth First Search (DFS).**  
@@ -81,29 +81,29 @@ Implementación en pseudocódigo:
 
 4. **Random Breadth First Search (r-BFS).**  
 Variante de BFS que sigue el mismo principio de búsqueda sistemática en amplitud, pero introduce una componente aleatoria al proceso de selección de los vecinos a explorar. En lugar de seguir un orden fijo, mezcla aleatorialmente el orden de aparición de los vecinos antes de añadirlos a la cola.
-Implementación en pseudocódigo:  
 ```
+## Implementación en pseudocódigo:
 r-BFS(Grafo, Nodo, Objetivo)
-''' Crear un diccionario `Visitados` para registrar los nodos visitados y de dónde se visitaron.
-    Crear una cola `Cola` (estructura FIFO).
-    Inicializar `Visitados[Nodo]` con `NULO` (Nodo raíz no tiene predecesor). '''
- Agregar `Nodo` a `Cola`.
- Mientras `Cola` no esté vacía:
+''' Crear un diccionario 'Visitados' para registrar los nodos visitados y de dónde se visitaron.
+    Crear una cola 'Cola' (estructura FIFO).
+    Inicializar 'Visitados[Nodo]' con `NULO` (Nodo raíz no tiene predecesor). '''
+ Agregar 'Nodo' a 'Cola'.
+ Mientras 'Cola' no esté vacía:
         m = DESENCOLAR(Cola)  # Obtener el siguiente nodo
         Si m == Objetivo:  # Si encontramos el objetivo
-            Crear una lista `Camino` vacía.
-            Mientras m no sea `NULO`:
-                Agregar m a `Camino`.
+            Crear una lista 'Camino' vacía.
+            Mientras m no sea 'NULO':
+                Agregar m a 'Camino'.
                 m = Visitados[m]  # Retroceder al nodo predecesor.
-            Devolver `Camino` invertido.
+            Devolver 'Camino' invertido.
         Vecinos = Lista de vecinos de Grafo[m].
         Barajar Vecinos aleatoriamente.  # Introducir componente aleatoria.
         Para cada Vecino en Vecinos:
-            Si Vecino no está en `Visitados`:
+            Si Vecino no está en 'Visitados':
                 Visitados[Vecino] = m  # Registrar el predecesor.
                 ENCOLAR(Cola, Vecino).
 Fin Mientras
-   Devolver `NULO` si no se encuentra un camino.
+   Devolver 'NULO' si no se encuentra un camino.
 
 ```
 
