@@ -1,0 +1,9 @@
+path: (A) cost: 0
+path: (A C) cost: 2.236068
+path: (A D) cost: 2.236068
+path: (A B) cost: 3.6055512
+path: (A E) cost: 3.6055512
+path: (A C F) cost: 5.8416195
+path: (A C D) cost: 4.236068
+path: (A C B) cost: 4.236068
+path: (A D G) cost: 5.398346

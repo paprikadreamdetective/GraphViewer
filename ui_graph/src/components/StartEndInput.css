@@ -1,0 +1,17 @@
+.start-end-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1px;
+  }
+  
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .button-group {
+    display: flex;
+    gap: 10px;
+  }

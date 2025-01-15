@@ -252,7 +252,7 @@ const GraphArea = ({ title, graph, visitedPaths, delayAnimation}) => {
           />
           <h2>Result:</h2>
           <pre>{result}</pre>
-          <button type="submit">Submit</button>
+          <button className="modern-button" type="submit">Submit</button>
           
         </form>
         <button 

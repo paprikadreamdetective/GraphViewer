@@ -1,9 +1,9 @@
 import React from "react";
-
+import './StartEndInput.css';
 function StartEndInput({ startNode, setStartNode, endNode, setEndNode }) {
   return (
-    <div className="start-end-nodes">
-      <div>
+    <div className="start-end-controls">
+      <div className="input-group">
         <label>Start Node:</label>
         <input
           type="text"
@@ -13,7 +13,7 @@ function StartEndInput({ startNode, setStartNode, endNode, setEndNode }) {
           required
         />
       </div>
-      <div>
+      <div className="input-group">
         <label>End Node:</label>
         <input
           type="text"
