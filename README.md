@@ -40,7 +40,7 @@ Los grafos fueron representados mediante listas de adyacencia, empleando una est
       
 1. **Breadth First Search (BFS).**  
 La exploración de grafos en amplitud es uno de los algoritmos más simples para búsqueda de caminos en grafos y el arquetipo de muchos algoritmos de grafos importantes modernos.  
-Partiendo de un nodo inicial o raíz, se exploran todos los nodos vecinos adyacentes (nivel 1) antes de profundizar al siguiente nivel. Una vez que todos los nodos adyacentes se han visitado, se avanza de nivel (nivel 2 - vecinos de vecinos), y se continúa sucesivamente, lo que garantiza que los nodos más cercanos al inicial se visiten primero. Este algoritmo emplea una cola como estructura de datos, manteniendo el orden de los nodos por visitar.  
+Partiendo de un nodo inicial o raíz, se exploran todos sus nodos vecinos adyacentes (nivel 1) antes de profundizar al siguiente nivel. Una vez que todos los vecinos cercanos se han visitado, se avanza de nivel (nivel 2 - vecinos de vecinos), y se continúa sucesivamente, lo que garantiza que los nodos más cercanos al inicial se visiten primero. Este algoritmo emplea una cola como estructura de datos, manteniendo el orden de los nodos por visitar.  
 Implementación en pseudocódigo:  
 ```
 
