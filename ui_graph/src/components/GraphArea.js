@@ -283,6 +283,10 @@ const GraphArea = ({ title, graph, visitedPaths, delayAnimation}) => {
             sizingType="none"
             edgeArrowPosition="none" // No arrows for undirected graph
             cameraMode="rotate"
+            edgeStyle={(edge) => ({
+              strokeWidth: 20,  // Cambia el valor para ajustar el grosor
+              stroke: 'black', // Color del borde
+            })}
           >
             
             <directionalLight position={[0, -4, 5]} intensity={1} />
