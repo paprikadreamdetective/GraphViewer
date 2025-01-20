@@ -1,7 +1,304 @@
-path: (I) cost: 0
-path: (I M) cost: 3.0
-path: (I J) cost: 3.0
-path: (I L) cost: 3.6055512
-path: (I G) cost: 3.6055512
-path: (I B) cost: 6.0827627
-path: (I M N) cost: 5.0
+path: (A) cost: 0
+path: (A C) cost: 2.236068
+path: (A B) cost: 3.6055512
+path: (A D) cost: 2.236068
+path: (A E) cost: 3.6055512
+path: (A C F) cost: 5.8416195
+path: (A C B) cost: 4.236068
+path: (A C D) cost: 4.236068
+path: (A B I) cost: 9.688314
+path: (A B G) cost: 7.8481917
+path: (A B F) cost: 6.6055512
+path: (A B C) cost: 5.6055512
+path: (A D G) cost: 5.398346
+path: (A D F) cost: 7.236068
+path: (A D C) cost: 4.236068
+path: (A D E) cost: 4.236068
+path: (A E G) cost: 7.8481917
+path: (A E H) cost: 6.6055512
+path: (A E D) cost: 5.6055512
+path: (A C F L) cost: 11.924382
+path: (A C F J) cost: 10.8416195
+path: (A C F G) cost: 8.8416195
+path: (A C F B) cost: 8.8416195
+path: (A C F D) cost: 10.8416195
+path: (A C B I) cost: 10.3188305
+path: (A C B G) cost: 8.478708
+path: (A C B F) cost: 7.236068
+path: (A C D G) cost: 7.3983455
+path: (A C D F) cost: 9.236068
+path: (A C D E) cost: 6.236068
+path: (A B I M) cost: 12.688314
+path: (A B I L) cost: 13.293865
+path: (A B I J) cost: 12.688314
+path: (A B I G) cost: 13.293865
+path: (A B G I) cost: 11.453743
+path: (A B G J) cost: 11.010469
+path: (A B G K) cost: 12.848192
+path: (A B G F) cost: 10.848192
+path: (A B G H) cost: 10.848192
+path: (A B G D) cost: 11.010469
+path: (A B G E) cost: 12.090832
+path: (A B F L) cost: 12.688314
+path: (A B F J) cost: 11.605551
+path: (A B F G) cost: 9.605551
+path: (A B F C) cost: 10.2111025
+path: (A B F D) cost: 11.605551
+path: (A B C F) cost: 9.2111025
+path: (A B C D) cost: 7.6055512
+path: (A D G I) cost: 9.003897
+path: (A D G J) cost: 8.560623
+path: (A D G K) cost: 10.398346
+path: (A D G F) cost: 8.398346
+path: (A D G H) cost: 8.398346
+path: (A D G B) cost: 9.640986
+path: (A D G E) cost: 9.640986
+path: (A D F L) cost: 13.3188305
+path: (A D F J) cost: 12.236068
+path: (A D F G) cost: 10.236068
+path: (A D F C) cost: 10.8416195
+path: (A D F B) cost: 10.236068
+path: (A D C F) cost: 7.841619
+path: (A D C B) cost: 6.236068
+path: (A D E G) cost: 8.478708
+path: (A D E H) cost: 7.236068
+path: (A E G I) cost: 11.453743
+path: (A E G J) cost: 11.010469
+path: (A E G K) cost: 12.848192
+path: (A E G F) cost: 10.848192
+path: (A E G H) cost: 10.848192
+path: (A E G B) cost: 12.090832
+path: (A E G D) cost: 11.010469
+path: (A E H K) cost: 9.767829
+path: (A E H G) cost: 9.605551
+path: (A E D G) cost: 8.767829
+path: (A E D F) cost: 10.605551
+path: (A E D C) cost: 7.6055512
+path: (A C F L P) cost: 15.529934
+path: (A C F L Q) cost: 16.924381
+path: (A C F L M) cost: 13.924382
+path: (A C F L I) cost: 15.529934
+path: (A C F J M) cost: 15.08426
+path: (A C F J N) cost: 14.003897
+path: (A C F J O) cost: 14.003897
+path: (A C F J I) cost: 13.8416195
+path: (A C F J K) cost: 13.8416195
+path: (A C F J G) cost: 14.003897
+path: (A C F G I) cost: 12.44717
+path: (A C F G J) cost: 12.003897
+path: (A C F G K) cost: 13.8416195
+path: (A C F G H) cost: 11.8416195
+path: (A C F G B) cost: 13.08426
+path: (A C F G D) cost: 12.003897
+path: (A C F G E) cost: 13.08426
+path: (A C F B I) cost: 14.924382
+path: (A C F B G) cost: 13.08426
+path: (A C F D G) cost: 14.003897
+path: (A C F D E) cost: 12.8416195
+path: (A C B I M) cost: 13.3188305
+path: (A C B I L) cost: 13.924381
+path: (A C B I J) cost: 13.3188305
+path: (A C B I G) cost: 13.924381
+path: (A C B G I) cost: 12.084259
+path: (A C B G J) cost: 11.6409855
+path: (A C B G K) cost: 13.478708
+path: (A C B G F) cost: 11.478708
+path: (A C B G H) cost: 11.478708
+path: (A C B G D) cost: 11.6409855
+path: (A C B G E) cost: 12.721349
+path: (A C B F L) cost: 13.3188305
+path: (A C B F J) cost: 12.236068
+path: (A C B F G) cost: 10.236068
+path: (A C B F D) cost: 12.236068
+path: (A C D G I) cost: 11.003897
+path: (A C D G J) cost: 10.560623
+path: (A C D G K) cost: 12.398346
+path: (A C D G F) cost: 10.398346
+path: (A C D G H) cost: 10.398346
+path: (A C D G B) cost: 11.6409855
+path: (A C D G E) cost: 11.6409855
+path: (A C D F L) cost: 15.3188305
+path: (A C D F J) cost: 14.236068
+path: (A C D F G) cost: 12.236068
+path: (A C D F B) cost: 12.236068
+path: (A C D E G) cost: 10.478708
+path: (A C D E H) cost: 9.236068
+path: (A B I M P) cost: 15.688314
+path: (A B I M N) cost: 14.688314
+path: (A B I M L) cost: 14.688314
+path: (A B I M J) cost: 16.930954
+path: (A B I L P) cost: 16.899416
+path: (A B I L Q) cost: 18.293865
+path: (A B I L M) cost: 15.293865
+path: (A B I L F) cost: 19.376629
+path: (A B I J M) cost: 16.930954
+path: (A B I J N) cost: 15.850592
+path: (A B I J O) cost: 15.850592
+path: (A B I J K) cost: 15.688314
+path: (A B I J G) cost: 15.850592
+path: (A B I J F) cost: 17.688314
+path: (A B I G J) cost: 16.456142
+path: (A B I G K) cost: 18.293865
+path: (A B I G F) cost: 16.293865
+path: (A B I G H) cost: 16.293865
+path: (A B I G D) cost: 16.456142
+path: (A B I G E) cost: 17.536507
+path: (A B G I M) cost: 14.453743
+path: (A B G I L) cost: 15.059294
+path: (A B G I J) cost: 14.453743
+path: (A B G J M) cost: 15.25311
+path: (A B G J N) cost: 14.172747
+path: (A B G J O) cost: 14.172747
+path: (A B G J I) cost: 14.010469
+path: (A B G J K) cost: 14.010469
+path: (A B G J F) cost: 16.01047
+path: (A B G K R) cost: 19.172749
+path: (A B G K O) cost: 16.453743
+path: (A B G K J) cost: 15.848192
+path: (A B G K H) cost: 16.01047
+path: (A B G F L) cost: 16.930954
+path: (A B G F J) cost: 15.848192
+path: (A B G F C) cost: 14.453743
+path: (A B G F D) cost: 15.848192
+path: (A B G H K) cost: 14.010469
+path: (A B G H E) cost: 13.848192
+path: (A B G D F) cost: 16.01047
+path: (A B G D C) cost: 13.010469
+path: (A B G D E) cost: 13.010469
+path: (A B G E H) cost: 15.090832
+path: (A B G E D) cost: 14.090832
+path: (A B F L P) cost: 16.293865
+path: (A B F L Q) cost: 17.688314
+path: (A B F L M) cost: 14.688314
+path: (A B F L I) cost: 16.293865
+path: (A B F J M) cost: 15.848191
+path: (A B F J N) cost: 14.767828
+path: (A B F J O) cost: 14.767828
+path: (A B F J I) cost: 14.605551
+path: (A B F J K) cost: 14.605551
+path: (A B F J G) cost: 14.767828
+path: (A B F G I) cost: 13.211102
+path: (A B F G J) cost: 12.767828
+path: (A B F G K) cost: 14.605551
+path: (A B F G H) cost: 12.605551
+path: (A B F G D) cost: 12.767828
+path: (A B F G E) cost: 13.848191
+path: (A B F C D) cost: 12.2111025
+path: (A B F D G) cost: 14.767828
+path: (A B F D C) cost: 13.605551
+path: (A B F D E) cost: 13.605551
+path: (A B C F L) cost: 15.293865
+path: (A B C F J) cost: 14.2111025
+path: (A B C F G) cost: 12.2111025
+path: (A B C F D) cost: 14.2111025
+path: (A B C D G) cost: 10.767829
+path: (A B C D F) cost: 12.605551
+path: (A B C D E) cost: 9.605551
+path: (A D G I M) cost: 12.003897
+path: (A D G I L) cost: 12.6094475
+path: (A D G I J) cost: 12.003897
+path: (A D G I B) cost: 15.086659
+path: (A D G J M) cost: 12.803264
+path: (A D G J N) cost: 11.7229
+path: (A D G J O) cost: 11.7229
+path: (A D G J I) cost: 11.560623
+path: (A D G J K) cost: 11.560623
+path: (A D G J F) cost: 13.560623
+path: (A D G K R) cost: 16.7229
+path: (A D G K O) cost: 14.003897
+path: (A D G K J) cost: 13.398346
+path: (A D G K H) cost: 13.560623
+path: (A D G F L) cost: 14.481109
+path: (A D G F J) cost: 13.398346
+path: (A D G F C) cost: 12.003897
+path: (A D G F B) cost: 11.398346
+path: (A D G H K) cost: 11.560623
+path: (A D G H E) cost: 11.398346
+path: (A D G B I) cost: 15.723749
+path: (A D G B F) cost: 12.640986
+path: (A D G B C) cost: 11.640986
+path: (A D G E H) cost: 12.640986
+path: (A D F L P) cost: 16.924381
+path: (A D F L Q) cost: 18.31883
+path: (A D F L M) cost: 15.3188305
+path: (A D F L I) cost: 16.924381
+path: (A D F J M) cost: 16.478708
+path: (A D F J N) cost: 15.398346
+path: (A D F J O) cost: 15.398346
+path: (A D F J I) cost: 15.236068
+path: (A D F J K) cost: 15.236068
+path: (A D F J G) cost: 15.398346
+path: (A D F G I) cost: 13.8416195
+path: (A D F G J) cost: 13.398346
+path: (A D F G K) cost: 15.236068
+path: (A D F G H) cost: 13.236068
+path: (A D F G B) cost: 14.478708
+path: (A D F G E) cost: 14.478708
+path: (A D F C B) cost: 12.8416195
+path: (A D F B I) cost: 16.31883
+path: (A D F B G) cost: 14.478708
+path: (A D F B C) cost: 12.236068
+path: (A D C F L) cost: 13.924381
+path: (A D C F J) cost: 12.8416195
+path: (A D C F G) cost: 10.8416195
+path: (A D C F B) cost: 10.8416195
+path: (A D C B I) cost: 12.3188305
+path: (A D C B G) cost: 10.478708
+path: (A D C B F) cost: 9.236068
+path: (A D E G I) cost: 12.084259
+path: (A D E G J) cost: 11.6409855
+path: (A D E G K) cost: 13.478708
+path: (A D E G F) cost: 11.478708
+path: (A D E G H) cost: 11.478708
+path: (A D E G B) cost: 12.721349
+path: (A D E H K) cost: 10.398346
+path: (A D E H G) cost: 10.236068
+path: (A E G I M) cost: 14.453743
+path: (A E G I L) cost: 15.059294
+path: (A E G I J) cost: 14.453743
+path: (A E G I B) cost: 17.536507
+path: (A E G J M) cost: 15.25311
+path: (A E G J N) cost: 14.172747
+path: (A E G J O) cost: 14.172747
+path: (A E G J I) cost: 14.010469
+path: (A E G J K) cost: 14.010469
+path: (A E G J F) cost: 16.01047
+path: (A E G K R) cost: 19.172749
+path: (A E G K O) cost: 16.453743
+path: (A E G K J) cost: 15.848192
+path: (A E G K H) cost: 16.01047
+path: (A E G F L) cost: 16.930954
+path: (A E G F J) cost: 15.848192
+path: (A E G F C) cost: 14.453743
+path: (A E G F B) cost: 13.848192
+path: (A E G F D) cost: 15.848192
+path: (A E G H K) cost: 14.010469
+path: (A E G B I) cost: 18.173595
+path: (A E G B F) cost: 15.090832
+path: (A E G B C) cost: 14.090832
+path: (A E G D F) cost: 16.01047
+path: (A E G D C) cost: 13.010469
+path: (A E H K R) cost: 16.092384
+path: (A E H K O) cost: 13.373381
+path: (A E H K J) cost: 12.767829
+path: (A E H K G) cost: 14.767829
+path: (A E H G I) cost: 13.211102
+path: (A E H G J) cost: 12.767828
+path: (A E H G K) cost: 14.605551
+path: (A E H G F) cost: 12.605551
+path: (A E H G B) cost: 13.848191
+path: (A E H G D) cost: 12.767828
+path: (A E D G I) cost: 12.373381
+path: (A E D G J) cost: 11.930107
+path: (A E D G K) cost: 13.767829
+path: (A E D G F) cost: 11.767829
+path: (A E D G H) cost: 11.767829
+path: (A E D G B) cost: 13.010469
+path: (A E D F L) cost: 16.688313
+path: (A E D F J) cost: 15.605551
+path: (A E D F G) cost: 13.605551
+path: (A E D F C) cost: 14.211102
+path: (A E D F B) cost: 13.605551
+path: (A E D C F) cost: 11.2111025
+path: (A E D C B) cost: 9.605551
+path: (A C F L P S) cost: 18.692211

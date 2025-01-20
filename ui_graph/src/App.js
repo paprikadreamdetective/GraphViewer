@@ -27,9 +27,9 @@ function App() {
           <Routes>
             <Route path="/dfs" element={<GraphArea title="Depth-First-Search" graph={graph_dfs} visitedPaths={dfs_path} delayAnimation={1000} />}/>
             <Route path="/bfs" element={<GraphArea title="Breadth-First-Search" graph={graph_dfs} visitedPaths={bfs_path} delayAnimation={250} />} />
-            <Route path="/bestfs" element={<GraphArea title="Best-First-Search" graph={graph} visitedPaths={best_first_search_path} delayAnimation={250}/>} />
-            <Route path="/bfsrandom" element={<GraphArea title="Random-Breadth-First-Search" graph={graph} visitedPaths={random_bfs_path} delayAnimation={250}/>} />
-            <Route path="/bfscormen" element={<GraphArea title="Cormen-Breadth-First-Search" graph={graph} visitedPaths={cormen_bfs_path} delayAnimation={1000}/>} />
+            <Route path="/bestfs" element={<GraphArea title="Best-First-Search" graph={graph_dfs} visitedPaths={best_first_search_path} delayAnimation={250}/>} />
+            <Route path="/bfsrandom" element={<GraphArea title="Random-Breadth-First-Search" graph={graph_dfs} visitedPaths={random_bfs_path} delayAnimation={250}/>} />
+            <Route path="/bfscormen" element={<GraphArea title="Cormen-Breadth-First-Search" graph={graph_dfs} visitedPaths={cormen_bfs_path} delayAnimation={1000}/>} />
             <Route path="/graphform" element={<GraphForm/>} />
           </Routes>
         

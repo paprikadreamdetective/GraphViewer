@@ -15,6 +15,7 @@ const GraphArea = ({ title, graph, visitedPaths, delayAnimation}) => {
   const [showPath, setShowPath] = useState(false);
   const [isAnimationReady, setIsAnimationReady] = useState(false); // Controla el estado del botón de animación
   const [isAnimating, setIsAnimating] = useState(false); // Nuevo estado
+  const [isComputed, setIsComputed] = useState(false); // Nuevo estado
 
   const [algorithm, setAlgorithm] = useState('');
   const [startNode, setStartNode] = useState('');
@@ -98,6 +99,7 @@ const GraphArea = ({ title, graph, visitedPaths, delayAnimation}) => {
   
   // Función para iniciar la animación
   const startAnimation = () => {
+    
     setShowPath(false);
     setIsAnimating(true); // Deshabilita el botón
     if (animationPath.length > 0) {
@@ -203,6 +205,7 @@ const GraphArea = ({ title, graph, visitedPaths, delayAnimation}) => {
   
       if (response.data.output) {
         setResult(response.data.output);
+        setIsComputed(true);
       } else {
         setResult("No path found or an error occurred.");
       }
@@ -256,6 +259,7 @@ const GraphArea = ({ title, graph, visitedPaths, delayAnimation}) => {
       }
     }
   }
+    
     loadGraphFromFile();
     loadPathsFromFile();
   }, [graph, visitedPaths]); // Se ejecuta cada vez que FILE_PATH cambie o se renderice el componente.
@@ -265,8 +269,14 @@ const GraphArea = ({ title, graph, visitedPaths, delayAnimation}) => {
       <h3>{title}</h3>
 
       <div className="controls-container">
+      <h3>Status: 
+        <br/>
+        {result}
+      </h3>
         <div className="left-controls">
+        
           <form onSubmit={handleSubmit}>
+            
           <div className="start-end-inputs">
        
           
@@ -290,8 +300,10 @@ const GraphArea = ({ title, graph, visitedPaths, delayAnimation}) => {
             />
             
           <div className='result-section'>
-          <h3>Result: {result}</h3>
-            <button className="modern-button" type="submit">Update Traversed Path</button>
+          <h3>Path: {selectedNodes.join(' ')}</h3>
+         
+            <button className="modern-button" type="submit">Compute Path</button>
+            
           </div>
         </div>
         
@@ -301,7 +313,7 @@ const GraphArea = ({ title, graph, visitedPaths, delayAnimation}) => {
         <div className="right-controls">
           <button 
             onClick={startAnimation} 
-            disabled={!isAnimationReady || isAnimating} 
+            disabled={(!isAnimationReady || isAnimating)} 
             className="modern-button">
             <span className="icon">🎬</span> Start Animation
           </button>
@@ -309,11 +321,11 @@ const GraphArea = ({ title, graph, visitedPaths, delayAnimation}) => {
             <span className="icon">🔄</span> Reset
           </button>
             
-            
+          
           </div>
           
           </div>
-
+          
   {showPath && (
         <div className="path-message">
           <p>Path Traversed ({startNode} to {endNode}): ( <strong>{selectedNodes.join(' ')}</strong> ) </p>

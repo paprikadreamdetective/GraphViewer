@@ -53,7 +53,7 @@ def process_graph():
             return jsonify({"error": "Error executing Lisp code", "details": result.stderr}), 500
         print(result.stdout)
         # return jsonify({"output": result.stdout})
-        return jsonify({"output": "Update Graph"})
+        return jsonify({"output": "Update Graph", "is_computed":True})
     except Exception as e:
         print("error aqui")
         return jsonify({"error": str(e)}), 500
@@ -64,7 +64,7 @@ def lisp_callback_def_graph(adjacency_list):
         f"(setf (get '{node} 'neighbors) '({' '.join(neighbors)}))" for node, neighbors in adjacency_list.items()
     )
 
-    
+
     lisp_code=f"""
     
 
