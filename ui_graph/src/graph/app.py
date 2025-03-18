@@ -6,6 +6,7 @@ import os
 
 app = Flask(__name__)
 CORS(app)
+print("Hello World")
 # Ruta para recibir el grafo y nodos
 @app.route('/process-graph', methods=['POST'])
 def process_graph():
