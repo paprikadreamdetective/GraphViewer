@@ -22,23 +22,23 @@ const Sidebar = () => {
           </li>
           <li className={selected === 'dfs' ? 'selected' : ''}
             onClick={() => handleSelect('dfs')}>
-            <Link to="/dfs">Depth-First-Search</Link>
+            <Link to="/graphs/dfs">Depth-First-Search</Link>
           </li>
           <li className={selected === 'bfs' ? 'selected' : ''}
             onClick={() => handleSelect('bfs')}>
-            <Link to="/bfs">Breadth-First-Search</Link>
+            <Link to="/graphs/bfs">Breadth-First-Search</Link>
           </li>
           <li className={selected === 'bestfs' ? 'selected' : ''}
             onClick={() => handleSelect('bestfs')}>
-            <Link to="/bestfs">Best-First-Search</Link>
+            <Link to="/graphs/bestfs">Best-First-Search</Link>
           </li>
           <li className={selected === 'bfsrandom' ? 'selected' : ''}
             onClick={() => handleSelect('bfsrandom')}>
-            <Link to="/bfsrandom">Random-Breadth-First-Search</Link>
+            <Link to="/graphs/bfsrandom">Random-Breadth-First-Search</Link>
           </li>
           <li className={selected === 'bfscormen' ? 'selected' : ''}
             onClick={() => handleSelect('bfscormen')}>
-            <Link to="/bfscormen">Cormen-Breadth-First-Search</Link>
+            <Link to="/graphs/bfscormen">Cormen-Breadth-First-Search</Link>
           </li>
         </ul>
       </nav>

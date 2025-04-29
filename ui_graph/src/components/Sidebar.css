@@ -24,6 +24,7 @@
 .sidebar nav ul {
     list-style: none;
     padding: 0;
+
 }
 
 .sidebar nav ul li {
@@ -37,6 +38,7 @@
 .sidebar nav ul li:hover {
     background-color: #555;
     color: #fff;
+    
 }
 
 .sidebar nav ul li.selected {
@@ -50,6 +52,7 @@
     color: inherit; /* Heredar el color del elemento padre */
     display: block;
     width: 100%;
+    height: 100%;
     text-align: center;
 }
 
